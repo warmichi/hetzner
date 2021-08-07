@@ -18,7 +18,7 @@ variable "HCLOUD_SSH_RANCHER_PUBLIC_KEY" {
   description = "SSH public key file"
 }
 
-variable "HCLOUD_SSH_RANCHER_PRIVATE_KEY_FILE" {
+variable "HCLOUD_SSH_RANCHER_PRIVATE_KEY" {
   description = "SSH private key file used to access instances"
 }
 
