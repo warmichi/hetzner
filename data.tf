@@ -1,5 +1,5 @@
 resource "helm_release" "rancher_stable" {
-  name = "rancher-stable"
+  name   = "rancher-stable"
   chart  = "rancher/rancher2"
 }
 

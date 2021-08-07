@@ -6,8 +6,8 @@ resource "helm_release" "rancher" {
   version   = var.rancher_version
   namespace = "cattle-system"
   set {
-    name  = "hostname"
-    value = "${local.rancher_hostname}.${local.domain}"
+    name    = "hostname"
+    value   = "${local.rancher_hostname}.${local.domain}"
   }
 }
 
@@ -39,7 +39,7 @@ EOF
 }
 
 resource "rancher2_bootstrap" "admin" {
-  provider = rancher2.bootstrap
+  provider   = rancher2.bootstrap
   depends_on = [null_resource.wait_for_rancher]
-  password = var.RANCHER_UI_PASSWORD
+  password   = var.RANCHER_UI_PASSWORD
 }

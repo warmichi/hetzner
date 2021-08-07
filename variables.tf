@@ -23,7 +23,7 @@ variable "HCLOUD_SSH_RANCHER_PRIVATE_KEY_FILE" {
 }
 
 variable "ssh_username" {
-  default     = "root"
+  default = "root"
 }
 
 # Provider specific settings
