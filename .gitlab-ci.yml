@@ -4,7 +4,7 @@ include:
 
 .secrets:
   secrets:
-    HCLOUD_TOKEN_FILE:
+    HCLOUD_TOKEN:
       vault: infra/prod/hetzner/HCLOUD_TOKEN@secret
       file: false
     HCLOUD_SSH_RANCHER_PRIVATE_KEY:
