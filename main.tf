@@ -16,7 +16,7 @@ resource "hcloud_network_subnet" "rancher" {
 }
 
 resource "hcloud_server" "rancher" {
-  count       = 1
+  count       = local.rancher_node_count
   name        = "${var.cluster_name}-${count.index + 1}"
   server_type = var.rancher-mgmt
   image       = var.image
@@ -32,7 +32,7 @@ resource "hcloud_server" "rancher" {
 ### Wait for docker install on nodes
 ########################################
 resource "null_resource" "wait_for_docker" {
-  count = hcloud_server.rancher.count
+  count = local.rancher_node_count
 
   triggers = {
     instance_ids = join(",", concat(hcloud_server.rancher.*.id))
