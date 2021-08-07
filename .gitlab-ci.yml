@@ -7,9 +7,9 @@ include:
     HCLOUD_TOKEN_FILE:
       vault: infra/prod/hetzner/HCLOUD_TOKEN@secret
       file: false
-    HCLOUD_SSH_RANCHER_PRIVATE_KEY_FILE:
+    HCLOUD_SSH_RANCHER_PRIVATE_KEY:
       vault: infra/prod/hetzner/HCLOUD_SSH_RANCHER_PRIVATE_KEY@secret
       file: false
-    HCLOUD_SSH_RANCHER_PUBLIC_KEY_FILE:
+    HCLOUD_SSH_RANCHER_PUBLIC_KEY:
       vault: infra/prod/hetzner/HCLOUD_SSH_RANCHER_PUBLIC_KEY@secret
       file: false
