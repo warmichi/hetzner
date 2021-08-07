@@ -32,7 +32,7 @@ resource "hcloud_server" "rancher" {
 ### Wait for docker install on nodes
 ########################################
 resource "null_resource" "wait_for_docker" {
-  count = local.master_node_count
+  count = hcloud_server.rancher.count
 
   triggers = {
     instance_ids = join(",", concat(hcloud_server.rancher.*.id))
