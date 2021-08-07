@@ -27,3 +27,34 @@ resource "hcloud_server" "rancher" {
     hcloud_ssh_key.rancher.id,
   ]
 }
+
+########################################
+### Wait for docker install on nodes
+########################################
+resource "null_resource" "wait_for_docker" {
+  count = local.master_node_count
+
+  triggers = {
+    instance_ids = join(",", concat(hcloud_server.rancher.*.id))
+  }
+
+  provisioner "local-exec" {
+    command = <<EOF
+while [ "$${RET}" -gt 0 ]; do
+    ssh -q -o StrictHostKeyChecking=no -i $${KEY} $${USER}@$${IP} 'docker ps 2>&1 >/dev/null'
+    RET=$?
+    if [ "$${RET}" -gt 0 ]; then
+        sleep 10
+    fi
+done
+EOF
+
+
+    environment = {
+      RET  = "1"
+      USER = "root"
+      IP   = element(concat(hcloud_server.rancher.*.public_ip), count.index)
+      KEY  = "${path.root}/outputs/id_rsa"
+    }
+  }
+}
