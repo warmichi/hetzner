@@ -2,6 +2,13 @@ provider "hcloud" {
 }
 
 provider "rancher2" {
+  alias = "bootstrap"
+
+  api_url   = "https://rancher.my-domain.com"
+  bootstrap = true
+}
+
+provider "rancher2" {
   alias = "admin"
 
   api_url   = rancher2_bootstrap.admin.url
