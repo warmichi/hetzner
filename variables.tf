@@ -3,6 +3,10 @@ variable "cluster_name" {
   default     = "rancher-mgmt"
 }
 
+resource "random_id" "id" {
+  byte_length = 8
+}
+
 variable "rancher_hostname" {
   name = "${cluser_name}-${random_id.id.hex}"
 }
