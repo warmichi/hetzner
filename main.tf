@@ -15,6 +15,16 @@ resource "hcloud_network_subnet" "rancher" {
   ip_range     = var.ip_range
 }
 
+resource "hcloud_server_network" "srvnetwork" {
+  dynamic "nodes" {
+    for_each = hcloud_server.rancher
+    content {
+      server_id  = hcloud_server.rancher.id
+      network_id = hcloud_network.net
+    }
+  }
+}
+
 resource "hcloud_server" "rancher" {
   count       = local.rancher_node_count
   name        = "${var.cluster_name}-${count.index + 1}"
@@ -53,7 +63,7 @@ EOF
     environment = {
       RET  = "1"
       USER = "root"
-      IP   = element(concat(hcloud_server.rancher.*.public_ip), count.index)
+      IP   = element(concat(hcloud_server.rancher.*.ipv4_address), count.index)
       KEY  = "${path.root}/outputs/id_rsa"
     }
   }
