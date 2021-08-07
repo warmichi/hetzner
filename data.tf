@@ -1,6 +1,6 @@
 resource "helm_release" "rancher_stable" {
   name = "rancher-stable"
-  url  = "https://releases.rancher.com/server-charts/stable/"
+  chart  = "rancher/rancher2"
 }
 
 data "template_file" "cloud_init" {
