@@ -16,7 +16,7 @@ resource "rke_cluster" "rancher_server" {
   }
 
   cluster_name = var.cluster_name
-  addons       = file("${path.module}/files/addons.yaml")
+  # addons       = file("${path.module}/files/addons.yaml")
   kubernetes_version = var.kubernetes_version
 
   services_etcd {
