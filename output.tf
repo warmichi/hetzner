@@ -1,3 +1,3 @@
 output "env-dynamic-url" {
-  value = "https://${rancher2.api_url}"
+  value = "https://${hcloud_server.rancher.ipv4_address}"
 }
