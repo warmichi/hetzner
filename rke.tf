@@ -8,7 +8,7 @@ resource "rke_cluster" "rancher_server" {
     for_each = hcloud_server.rancher
     content {
       address          = nodes.value.ipv4_address
-      internal_address = nodes.value.network.
+      internal_address = nodes.value.ipv4_address
       user             = "ubuntu"
       role             = ["controlplane", "etcd", "worker"]
       ssh_key          = var.HCLOUD_SSH_RANCHER_PRIVATE_KEY
