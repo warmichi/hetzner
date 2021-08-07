@@ -3,14 +3,6 @@ variable "cluster_name" {
   default     = "rancher-mgmt"
 }
 
-resource "random_id" "id" {
-  byte_length = 8
-}
-
-variable "rancher_hostname" {
-  default = "${var.cluster_name}-${random_id.id.hex}"
-}
-
 variable "rancher_version" {
   default = "2.5.9"
 }

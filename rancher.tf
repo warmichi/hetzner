@@ -7,7 +7,7 @@ resource "helm_release" "rancher" {
   namespace = "cattle-system"
   set {
     name  = "hostname"
-    value = "${var.rancher_hostname}.${var.domain}"
+    value = "${local.rancher_hostname}.${var.domain}"
   }
 }
 
@@ -32,7 +32,7 @@ EOF
 
 
     environment = {
-      RANCHER_HOSTNAME = "${var.rancher_hostname}.${local.domain}"
+      RANCHER_HOSTNAME = "${local.rancher_hostname}.${local.domain}"
       TF_LINK          = helm_release.rancher.name
     }
   }
