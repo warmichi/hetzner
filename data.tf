@@ -1,4 +1,4 @@
-data "helm_repository" "rancher_stable" {
+data "helm_release" "rancher_stable" {
   name = "rancher-stable"
   url  = "https://releases.rancher.com/server-charts/stable/"
 }
