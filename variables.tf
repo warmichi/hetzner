@@ -11,7 +11,7 @@ variable "RANCHER_UI_PASSWORD" {
 }
 
 variable "kubernetes_version" {
-  default = "1.21"
+  default = "v1.20.8-rancher1-1"
 }
 
 variable "HCLOUD_SSH_RANCHER_PUBLIC_KEY" {
