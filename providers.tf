@@ -4,9 +4,9 @@ provider "hcloud" {
 provider "rancher2" {
   alias = "admin"
 
-  api_url = rancher2_bootstrap.admin.url
+  api_url   = rancher2_bootstrap.admin.url
   token_key = rancher2_bootstrap.admin.token
-  insecure = true
+  insecure  = true
 }
 
 provider "rke" {

@@ -1,5 +1,5 @@
 resource "hcloud_ssh_key" "rancher" {
-  name       = "${var.cluster_name}"
+  name       = var.cluster_name
   public_key = var.HCLOUD_SSH_RANCHER_PUBLIC_KEY
 }
 
