@@ -7,7 +7,7 @@ resource "helm_release" "rancher" {
   namespace = "cattle-system"
   set {
     name  = "hostname"
-    value = "${local.rancher_hostname}.${var.domain}"
+    value = "${local.rancher_hostname}.${local.domain}"
   }
 }
 

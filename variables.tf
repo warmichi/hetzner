@@ -14,10 +14,6 @@ variable "kubernetes_version" {
   default = "1.21"
 }
 
-variable "domain" {
-  default = "uwannah.com"
-}
-
 variable "HCLOUD_SSH_RANCHER_PUBLIC_KEY" {
   description = "SSH public key file"
 }

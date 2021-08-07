@@ -4,7 +4,7 @@ provider "hcloud" {
 provider "rancher2" {
   alias = "bootstrap"
 
-  api_url   = "https://rancher.my-domain.com"
+  api_url   = "https://rancher.${local.domain}"
   bootstrap = true
 }
 
