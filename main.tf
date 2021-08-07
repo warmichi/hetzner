@@ -17,7 +17,7 @@ resource "hcloud_network_subnet" "rancher" {
 
 resource "hcloud_server_network" "srvnetwork" {
   for_each   = hcloud_server.rancher
-  server_id  = each.id
+  server_id  = each.value.id
   network_id = hcloud_network.net.id
 }
 
