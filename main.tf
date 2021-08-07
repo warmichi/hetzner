@@ -21,6 +21,7 @@ resource "hcloud_server" "rancher" {
   server_type = var.rancher-mgmt
   image       = var.image
   location    = var.datacenter
+  user_data   = data.template_file.cloud_init.rendered
 
   ssh_keys = [
     hcloud_ssh_key.rancher.id,

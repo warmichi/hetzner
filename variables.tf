@@ -2,28 +2,37 @@ variable "cluster_name" {
   description = "prefix for cloud resources"
   default     = "rancher-mgmt"
 }
+
+variable "rancher_hostname" {
+  name = "${cluser_name}-${random_id.id.hex}"
+}
+
+variable "rancher_version" {
+  default = "2.5.9"
+}
+
+variable "RANCHER_UI_PASSWORD" {
+}
+
+variable "kubernetes_version" {
+  default = "1.21"
+}
+
+variable "domain" {
+  default = "uwannah.com"
+}
+
 variable "HCLOUD_SSH_RANCHER_PUBLIC_KEY" {
   description = "SSH public key file"
 }
 
-# variable "HCLOUD_SSH_RANCHER_PRIVATE_KEY_FILE" {
-#   description = "SSH private key file used to access instances"
-# }
+variable "HCLOUD_SSH_RANCHER_PRIVATE_KEY_FILE" {
+  description = "SSH private key file used to access instances"
+}
 
-# variable "ssh_port" {
-#   description = "SSH port to be used to provision instances"
-#   default     = 22
-# }
-
-# variable "ssh_username" {
-#   description = "SSH user, used only in output"
-#   default     = "root"
-# }
-
-# variable "ssh_agent_socket" {
-#   description = "SSH Agent socket, default to grab from $SSH_AUTH_SOCK"
-#   default     = "env:SSH_AUTH_SOCK"
-# }
+variable "ssh_username" {
+  default     = "root"
+}
 
 # Provider specific settings
 
@@ -46,5 +55,5 @@ variable "ip_range" {
 
 variable "network_zone" {
   default     = "eu-central"
-  description = "network zone to use for private network"
+  description = "network zone to usefor private network"
 }
