@@ -1,6 +1,6 @@
 # install rancher
 resource "helm_release" "rancher" {
-  name      = "rancher"
+  name = "rancher"
   #  repository = "https://releases.rancher.com/server-charts/latest"
   chart     = "rancher-latest/rancher"
   version   = var.rancher_version
