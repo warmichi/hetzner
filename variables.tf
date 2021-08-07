@@ -8,7 +8,7 @@ resource "random_id" "id" {
 }
 
 variable "rancher_hostname" {
-  name = "${cluser_name}-${random_id.id.hex}"
+  default = "${cluser_name}-${random_id.id.hex}"
 }
 
 variable "rancher_version" {
