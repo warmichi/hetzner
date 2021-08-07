@@ -1,13 +1,13 @@
 # install rancher
 resource "helm_release" "rancher" {
   name      = "rancher"
-#  repository = "https://releases.rancher.com/server-charts/latest"
+  #  repository = "https://releases.rancher.com/server-charts/latest"
   chart     = "rancher-latest/rancher"
   version   = var.rancher_version
   namespace = "cattle-system"
   set {
-    name    = "hostname"
-    value   = "${local.rancher_hostname}.${local.domain}"
+    name  = "hostname"
+    value = "${local.rancher_hostname}.${local.domain}"
   }
 }
 

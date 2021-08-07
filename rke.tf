@@ -4,7 +4,7 @@
 resource "rke_cluster" "rancher_server" {
   depends_on = [null_resource.wait_for_docker]
 
-  dynamic nodes {
+  dynamic "nodes" {
     for_each = hcloud_server.rancher
     content {
       address          = nodes.value.ip
@@ -15,7 +15,7 @@ resource "rke_cluster" "rancher_server" {
     }
   }
 
-  cluster_name       = var.cluster_name
+  cluster_name = var.cluster_name
   # addons       = file("${path.module}/files/addons.yaml")
   kubernetes_version = var.kubernetes_version
 
