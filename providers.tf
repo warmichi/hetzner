@@ -12,9 +12,10 @@ provider "rancher2" {
 }
 
 provider "rancher2" {
+  alias     = "admin"
   api_url   = "https://${local.rancher_hostname}.${local.domain}:8443"
   token_key = rancher2_bootstrap.admin.token
-  insecure = true
+  insecure  = true
 }
 
 provider "rke" {
