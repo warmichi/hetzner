@@ -7,7 +7,7 @@ include:
     HCLOUD_TOKEN:
       vault: infra/prod/hetzner/HCLOUD_TOKEN@secret
       file: false
-    TF_VAR_HETZNER_DNS_API_TOKEN:
+    HETZNER_DNS_API_TOKEN:
       vault: infra/prod/hetzner/HETZNER_DNS_API_TOKEN@secret
       file: false 
     TF_VAR_HCLOUD_SSH_RANCHER_PRIVATE_KEY:
