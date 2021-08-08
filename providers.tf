@@ -15,8 +15,8 @@ provider "rancher2" {
 provider "rke" {
 }
 
-provider "helm" {
-  kubernetes {
-    config_path = local_file.kube_cluster_yaml.filename
-  }
-}
+# provider "helm" {
+#   kubernetes {
+#     config_path = local_file.kube_cluster_yaml.filename
+#   }
+# }

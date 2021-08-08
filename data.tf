@@ -1,7 +1,7 @@
-resource "helm_release" "rancher_stable" {
-  name  = "rancher-stable"
-  chart = "rancher/rancher2"
-}
+# resource "helm_release" "rancher_stable" {
+#   name  = "rancher-stable"
+#   chart = "rancher/rancher2"
+# }
 
 data "template_file" "cloud_init" {
   template = file("${path.module}/files/cloud-init.yaml")
