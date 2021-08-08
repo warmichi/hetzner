@@ -15,16 +15,6 @@ resource "hcloud_network_subnet" "rancher" {
   ip_range     = var.ip_range
 }
 
-resource "hcloud_server_network" "srvnetwork" {
-  dynamic "nodes" {
-    for_each = hcloud_server.rancher
-    content {
-      server_id  = nodes.value.id
-      network_id = hcloud_network.net.id
-    }
-  }
-}
-
 resource "hcloud_server" "rancher" {
   count       = local.rancher_node_count
   name        = "${var.cluster_name}-${count.index + 1}"
@@ -37,6 +27,17 @@ resource "hcloud_server" "rancher" {
     hcloud_ssh_key.rancher.id,
   ]
 }
+
+resource "hcloud_server_network" "srvnetwork" {
+  dynamic "nodes" {
+    for_each = hcloud_server.rancher
+    content {
+      server_id  = nodes.value.id
+      network_id = hcloud_network.net.id
+    }
+  }
+}
+
 
 ########################################
 ### Wait for docker install on nodes
