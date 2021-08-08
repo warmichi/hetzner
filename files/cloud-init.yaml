@@ -1,8 +1,16 @@
 #cloud-config
+
+# install rancher using ranherd
 runcmd:
-- export INSTALL_RANCHERD_VERSION=v2.5.9
 - apt-get update
-- curl -sfL https://get.rancher.io | sh -
+- curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=v2.5.9 sh -
 - systemctl enable rancherd-server.service
 - systemctl start rancherd-server.service
-- export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
+
+# set persistent enviroment variables
+write_files:
+- path: /etc/environment
+  content: |
+    KUBECONFIG=/etc/rancher/rke2/rke2.yaml
+    PATH=$PATH:/var/lib/rancher/rke2/bin
+  append: true
