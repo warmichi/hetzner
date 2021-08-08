@@ -22,6 +22,9 @@ variable "HCLOUD_SSH_RANCHER_PRIVATE_KEY" {
   description = "SSH private key file used to access instances"
 }
 
+variable "HETZNER_DNS_API_TOKEN" {
+}
+
 variable "ssh_username" {
   default = "root"
 }
