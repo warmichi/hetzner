@@ -7,12 +7,12 @@ provider "hetznerdns" {
 
 provider "rancher2" {
   alias     = "bootstrap"
-  api_url   = "https://rancher.${local.domain}"
+  api_url   = "https://${local.rancher_hostname}.${local.domain}"
   bootstrap = true
 }
 
 provider "rancher2" {
-  api_url   = "https://rancher.${local.domain}"
+  api_url   = "https://${local.rancher_hostname}.${local.domain}"
   token_key = rancher2_bootstrap.admin.token
 }
 
