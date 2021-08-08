@@ -22,6 +22,7 @@ resource "hcloud_server_network" "srvnetwork" {
       server_id  = nodes.value.id
       network_id = hcloud_network.net.id
     }
+  }
 }
 
 resource "hcloud_server" "rancher" {
