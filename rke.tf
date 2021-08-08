@@ -11,7 +11,7 @@ resource "rke_cluster" "rancher_server" {
       internal_address = nodes.value.ipv4_address
       user             = "root"
       role             = ["controlplane", "etcd", "worker"]
-      ssh_key          = var.HCLOUD_SSH_RANCHER_PRIVATE_KEY
+      ssh_key          = file(var.HCLOUD_SSH_RANCHER_PRIVATE_KEY)
     }
   }
 
