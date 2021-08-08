@@ -9,8 +9,7 @@ runcmd:
 
 # set persistent enviroment variables
 write_files:
-- path: /etc/environment
+- path: ~/.profile
   content: |
-    KUBECONFIG=/etc/rancher/rke2/rke2.yaml
-    PATH=$PATH:/var/lib/rancher/rke2/bin
+    export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
   append: true
