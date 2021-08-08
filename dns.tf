@@ -6,10 +6,11 @@ data "hcloud_server" "web" {
     name = local.rancher_hostname
 }
 
-resource "hetznerdns_record" "web" {
+resource "hetznerdns_record" "rancher" {
     zone_id = data.hetznerdns_zone.dns_zone.id
-    name    = "www"
+    name    = local.rancher_hostname
     value   = hcloud_server.rancher[0].ipv4_address
     type    = "A"
     ttl     = 60
 }
+

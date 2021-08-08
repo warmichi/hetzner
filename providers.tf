@@ -1,6 +1,10 @@
 provider "hcloud" {
 }
 
+provider "hetznerdns" {
+  # Configuration options
+}
+
 provider "rancher2" {
   alias     = "bootstrap"
   api_url   = "https://rancher.${local.domain}"

@@ -36,6 +36,9 @@ EOF
       # TF_LINK          = helm_release.rancher.name
     }
   }
+  depends_on = [
+    hetznerdns_record.rancher,
+  ]
 }
 
 resource "rancher2_bootstrap" "admin" {
