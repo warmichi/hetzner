@@ -13,3 +13,8 @@ write_files:
   content: |
     export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
   append: true
+- path: /etc/rancher/rke2/config.yaml
+  content: |
+    server: ${rancher_api_url}
+    token: K10c9da28907c5e627357ffadfe2903a39d0f9bf4c92d5d094bbfa25c5d2e0ed50c::server:90297fd7443bc1daeb067a6680a61493
+  append: true

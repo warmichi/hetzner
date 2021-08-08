@@ -5,6 +5,9 @@
 
 data "template_file" "cloud_init" {
   template = file("${path.module}/files/cloud-config.yaml")
+  vars = {
+    rancher_api_url = "${local.rancher_api_url}"
+  }
 }
 
 data "rancher2_user" "admin" {
