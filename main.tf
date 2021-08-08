@@ -29,7 +29,7 @@ resource "hcloud_server" "rancher" {
 }
 
 resource "hcloud_server_network" "srvnetwork" {
-  for_each   = hcloud_server.rancher
+  for_each   = hcloud_server.rancher.name
   server_id  = each.value.id
   network_id = hcloud_network.net.id
 }
