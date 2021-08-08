@@ -4,7 +4,7 @@
 # }
 
 data "template_file" "cloud_init" {
-  template = file("${path.module}/files/cloud-init.yaml")
+  template = file("${path.module}/files/cloud-config.yaml")
 }
 
 data "rancher2_user" "admin" {
