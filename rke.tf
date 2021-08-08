@@ -28,7 +28,7 @@
 #   }
 # }
 
-resource "local_file" "kube_cluster_yaml" {
-  filename = "${path.root}/outputs/kube_config_cluster.yml"
-  content  = rke_cluster.rancher_server.kube_config_yaml
-}
+# resource "local_file" "kube_cluster_yaml" {
+#   filename = "${path.root}/outputs/kube_config_cluster.yml"
+#   content  = rke_cluster.rancher_server.kube_config_yaml
+# }
