@@ -16,7 +16,7 @@ resource "hcloud_network_subnet" "rancher" {
 }
 
 resource "hcloud_server_network" "srvnetwork" {
-  dynamic nodes {
+  dynamic "nodes" {
     for_each = hcloud_server.rancher
     content {
       server_id  = nodes.value.id
