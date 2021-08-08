@@ -60,7 +60,7 @@ EOF
       RET  = "1"
       USER = "root"
       IP   = element(concat(hcloud_server.rancher.*.ipv4_address), count.index)
-      KEY  = "${path.root}/outputs/id_rsa"
+      KEY  = "${HCLOUD_SSH_RANCHER_PRIVATE_KEY}"
     }
   }
 }
