@@ -6,6 +6,7 @@ provider "hetznerdns" {
 
 provider "rancher2" {
   alias     = "bootstrap"
+
   api_url   = "https://${local.rancher_hostname}.${local.domain}:8443"
   bootstrap = true
   insecure  = true
@@ -16,9 +17,6 @@ provider "rancher2" {
 #   token_key = rancher2_bootstrap.admin.token
 #   insecure  = true
 # }
-
-provider "rke" {
-}
 
 # provider "helm" {
 #   kubernetes {

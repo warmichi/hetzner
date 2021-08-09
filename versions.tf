@@ -12,12 +12,5 @@ terraform {
       source  = "rancher/rancher2"
       version = "1.16.0"
     }
-    rke = {
-      source  = "rancher/rke"
-      version = "1.2.3"
-    }
-    helm = {
-      version = "2.2.0"
-    }
   }
 }
