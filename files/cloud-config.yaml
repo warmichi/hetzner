@@ -15,6 +15,5 @@ write_files:
   append: true
 - path: /etc/rancher/rke2/config.yaml
   content: |
-    server: ${rancher_api_url}
-    token: K10c9da28907c5e627357ffadfe2903a39d0f9bf4c92d5d094bbfa25c5d2e0ed50c::server:90297fd7443bc1daeb067a6680a61493
+    token: 00a52523acfd20eb6363b73a87b777712cc7bbfd4d443e21fb82ce8dcda624c0
   append: true
