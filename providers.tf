@@ -2,7 +2,6 @@ provider "hcloud" {
 }
 
 provider "hetznerdns" {
-  # Configuration options
 }
 
 provider "rancher2" {
@@ -12,11 +11,11 @@ provider "rancher2" {
   insecure  = true
 }
 
-provider "rancher2" {
-  api_url   = rancher2_bootstrap.admin.url
-  token_key = rancher2_bootstrap.admin.token
-  insecure  = true
-}
+# provider "rancher2" {
+#   api_url   = rancher2_bootstrap.admin.url
+#   token_key = rancher2_bootstrap.admin.token
+#   insecure  = true
+# }
 
 provider "rke" {
 }
