@@ -6,7 +6,6 @@ provider "hetznerdns" {
 
 provider "rancher2" {
   api_url   = "https://${local.rancher_hostname}.${local.domain}:8443"
-
   bootstrap = true
   insecure  = true
 }
