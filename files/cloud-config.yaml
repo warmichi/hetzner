@@ -4,8 +4,7 @@
 runcmd:
 - apt-get update
 - curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=v2.5.9 sh -
-- systemctl enable rancherd-server.service
-- 
+- systemctl enable rancherd-server.service --now
 
 # set persistent enviroment variables
 write_files:
