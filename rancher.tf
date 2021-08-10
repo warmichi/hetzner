@@ -22,7 +22,7 @@ resource "null_resource" "wait_for_rancher" {
 #     fi
 # done
 while [ "$${resp}" != "pong" ]; do
-    resp=$(curl -sSk -m 2 "https://$${RANCHER_HOSTNAME}:8443/ping")
+    resp=$(curl -sSk -m 2 "https://$${RANCHER_HOSTNAME}:8443/ping"
     echo "Rancher Response: $${resp}"
     if [ "$${resp}" != "pong" ]; then
       sleep 10
