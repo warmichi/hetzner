@@ -42,7 +42,7 @@ EOF
 }
 
 resource "rancher2_bootstrap" "admin" {
-  provider   = "rancher2.bootstrap"
+  provider   = rancher2.bootstrap
 
   depends_on = [null_resource.wait_for_rancher]
   password   = "test"
