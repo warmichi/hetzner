@@ -18,6 +18,6 @@ include:
     TF_VAR_RANCHER_UI_PASSWORD:
       vault: infra/prod/hetzner/RANCHER_UI_PASSWORD@secret
       file: false
-    RANCHER_TOKEN_KEY:
+    TF_RANCHER_TOKEN_KEY:
       vault: infra/prod/hetzner/RANCHER_TOKEN_KEY@secret
       file: false
