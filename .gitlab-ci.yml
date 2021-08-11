@@ -4,7 +4,7 @@ include:
 
 .secrets:
   secrets:
-    HCLOUD_TOKEN:
+    hcloud_token:
       vault: infra/prod/hetzner/HCLOUD_TOKEN@secret
       file: false
     HETZNER_DNS_API_TOKEN:

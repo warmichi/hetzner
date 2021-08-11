@@ -14,6 +14,9 @@ variable "kubernetes_version" {
   default = "v1.20.8-rancher1-1"
 }
 
+variable "RANCHER_TOKEN_KEY" {
+}
+
 variable "HCLOUD_SSH_RANCHER_PUBLIC_KEY" {
   description = "SSH public key file"
 }
