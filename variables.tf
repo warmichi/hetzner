@@ -7,10 +7,10 @@ variable "rancher_version" {
   default = "2.5.9"
 }
 
-variable "RANCHER_UI_PASSWORD" {
+variable "RANCHER_TOKEN_KEY" {
 }
 
-variable "RANCHER_TOKEN_KEY" {
+variable "RANCHER_UI_PASSWORD" {
 }
 
 variable "HCLOUD_SSH_RANCHER_PUBLIC_KEY" {
