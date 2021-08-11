@@ -10,10 +10,6 @@ variable "rancher_version" {
 variable "RANCHER_UI_PASSWORD" {
 }
 
-variable "kubernetes_version" {
-  default = "v1.20.8-rancher1-1"
-}
-
 variable "RANCHER_TOKEN_KEY" {
 }
 
