@@ -1,16 +1,6 @@
-# resource "helm_release" "rancher_stable" {
-#   name  = "rancher-stable"
-#   chart = "rancher/rancher2"
-# }
-
 data "template_file" "cloud_init" {
   template = file("${path.module}/files/cloud-config.yaml")
   vars = {
-    rancher_token_key = local.RANCHER_TOKEN_KEY
+    RANCHER_TOKEN_KEY = var.RANCHER_TOKEN_KEY
   }
-}
-
-data "rancher2_user" "admin" {
-  username   = "admin"
-  depends_on = [rancher2_bootstrap.admin]
 }

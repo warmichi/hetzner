@@ -1,13 +1,6 @@
 #cloud-config
 
-# install rancher using ranherd
-runcmd:
-- apt-get update
-- curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=v2.5.9 sh -
-- systemctl enable rancherd-server.service --now
-- rancherd --token RANCHER_TOKEN_KEY
-
-# set persistent enviroment variables
+# set persistent env-variables and create token file
 write_files:
 - path: /root/.profile
   content: |
@@ -15,5 +8,13 @@ write_files:
   append: true
 - path: /etc/rancher/rke2/config.yaml
   content: |
-    token: 00a52523acfd20eb6363b73a87b777712cc7bbfd4d443e21fb82ce8dcda624c0
+    token: ${RANCHER_TOKEN_KEY}
   append: true
+
+
+# install rancher using ranherd
+runcmd:
+- apt-get update
+- curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=v2.5.9 sh -
+- systemctl enable rancherd-server.service --now
+
