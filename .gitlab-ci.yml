@@ -1,20 +1,7 @@
 include:
   - project: 'warmichi/templates'
     file: '/terraform.gitlab-ci.yml'
-
-validate:
-  stage: validate
-  extends: .secrets
-  script:
-    - *install-curl-jq
-    - *gitlab-tf-backend
-    - terraform validate
-    - terraform fmt -check -diff
-    - echo $TF_RANCHER_TOKEN_KEY
-  only:
-    - branches
-    - merge_requests
-
+    
 .secrets:
   secrets:
     HCLOUD_TOKEN:
