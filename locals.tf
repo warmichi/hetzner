@@ -3,7 +3,7 @@ resource "random_id" "id" {
 }
 
 locals {
-  rancher_cluster-name = "rancher"
+  rancher_cluster_name = "rancher"
   rancher_version      = "v2.5.9"
   rancher_hostname     = "$local.cluster_name}-${random_id.id.hex}"
   rancher_node_count   = 1
