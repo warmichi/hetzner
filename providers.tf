@@ -5,6 +5,7 @@ provider "hetznerdns" {
 }
 
 provider "rancher2" {
+  alias     = "bootstrap"
   api_url   = "https://${local.rancher_api_url}:8443"
   bootstrap = true
   insecure  = true
