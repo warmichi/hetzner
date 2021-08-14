@@ -17,7 +17,7 @@ resource "hcloud_network_subnet" "network_subnet" {
 
 resource "hcloud_server" "rancher" {
   count       = local.rancher_node_count
-  name        = "${local.rancher_cluster_name}-${count.index + 1}"
+  name        = local.rancher_hostname
   server_type = local.hetzner_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
