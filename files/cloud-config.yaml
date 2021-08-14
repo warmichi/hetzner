@@ -17,4 +17,5 @@ runcmd:
 - apt-get update
 - curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=${RANCHER_VERSION} sh -
 - systemctl enable rancherd-server.service --now
+- rancherd reset-admin --password ${RANCHER_UI_PASSWORD}
 
