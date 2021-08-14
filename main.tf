@@ -4,7 +4,7 @@ resource "hcloud_ssh_key" "rancher" {
 }
 
 resource "hcloud_network" "net" {
-  name     = local.cluster_name
+  name     = local.rancher_cluster_name
   ip_range = local.ip_range
 }
 
