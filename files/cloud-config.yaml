@@ -15,6 +15,6 @@ write_files:
 # install rancher using ranherd
 runcmd:
 - apt-get update
-- curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=v2.5.9 sh -
+- curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=${RANCHER_VERSION} sh -
 - systemctl enable rancherd-server.service --now
 
