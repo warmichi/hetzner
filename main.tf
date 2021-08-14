@@ -9,7 +9,7 @@ resource "hcloud_network" "network" {
 }
 
 resource "hcloud_network_subnet" "network_subnet" {
-  network_id   = hcloud_network.net.id
+  network_id   = hcloud_network.network.id
   type         = "server"
   network_zone = local.network_zone
   ip_range     = local.ip_range
@@ -17,7 +17,7 @@ resource "hcloud_network_subnet" "network_subnet" {
 
 resource "hcloud_server" "rancher" {
   count       = local.rancher_node_count
-  name        = "${local.cluster_name}-${count.index + 1}"
+  name        = "${local.rancher_cluster_name}-${count.index + 1}"
   server_type = local.hetzner_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
