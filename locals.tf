@@ -9,7 +9,7 @@ locals {
   rancher_hostname     = "${local.rancher_cluster_name}-${random_id.id.hex}"
   rancher_api_url      = "https://${local.rancher_hostname}.${local.domain}:8443"
 
-  hetzner_server_type = "cx11"
+  hetzner_server_type = "cx21"
   hetzner_image       = "ubuntu-20.04"
   hetzner_datacenter  = "nbg1"
 
