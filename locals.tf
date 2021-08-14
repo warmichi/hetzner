@@ -9,7 +9,7 @@ locals {
   rancher_node_count   = 1
   rancher_api_url      = "https://${local.rancher_hostname}.${local.domain}:8443"
 
-  hetzner_server_type = "CX11"
+  hetzner_server_type = "cx11"
   hetzner_image       = "ubuntu-20.04"
   hetzner_datacenter  = "nbg1"
 
