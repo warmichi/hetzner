@@ -25,7 +25,6 @@ resource "hcloud_server" "rancher" {
 
   network {
     network_id = hcloud_network.network.id
-
   }
 
   ssh_keys = [

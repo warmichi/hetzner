@@ -5,7 +5,7 @@ data "template_file" "ansible_web_hosts" {
   vars = {
     node_name    = hcloud_server.rancher.*.name
     ansible_user = local.hetzener_ssh_user
-    ip           = element(hcloud_server.rancher[*].ipv4_address)
+    ip           = element(hcloud_server.rancher.*.ipv4_address, count.index)
   }
 }
 
