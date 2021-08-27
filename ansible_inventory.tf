@@ -1,4 +1,5 @@
 data "template_file" "ansible_web_hosts" {
+  count      = local.rancher_node_count
   template   = file("${path.root}/templates/ansible_hosts.tpl")
   depends_on = [hcloud_server.rancher]
 
