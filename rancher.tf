@@ -20,9 +20,9 @@ EOF
   ]
 }
 
-resource "rancher2_bootstrap" "admin" {
-  provider   = rancher2.bootstrap
-  depends_on = [null_resource.wait_for_rancher]
-  password   = var.RANCHER_UI_PASSWORD
-}
+# resource "rancher2_bootstrap" "admin" {
+#   provider   = rancher2.bootstrap
+#   depends_on = [null_resource.wait_for_rancher]
+#   password   = var.RANCHER_UI_PASSWORD
+# }
 
