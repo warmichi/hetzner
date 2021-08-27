@@ -13,7 +13,7 @@ data "template_file" "ansible_skeleton" {
   template = file("${path.root}/templates/ansible_skeleton.tpl")
 
   vars = {
-    rancher_hosts_def = join("", data.template_file.ansible_web_hosts.*.rendered)
+    rancher_hosts_def = join("", data.template_file.ansible_web_hosts.*.rendered, count.index)
   }
 }
 
