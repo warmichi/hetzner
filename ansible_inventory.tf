@@ -3,9 +3,9 @@ data "template_file" "ansible_web_hosts" {
   depends_on = [hcloud_server.rancher]
 
   vars = {
-    node_name    = hcloud_server.rancher.*[count.index]["Name"]
+    node_name    = hcloud_server.rancher.*.name
     ansible_user = local.hetzener_ssh_user
-    ip           = element(hcloud_server.rancher.*.ipv4_address, count.index)
+    ip           = element(hcloud_server.rancher.*.ipv4_address)
   }
 }
 
