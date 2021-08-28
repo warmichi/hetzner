@@ -17,8 +17,9 @@
     - start rancherd-server
 
   handlers:
-    - name: start rancherd-server
-      service:
-        name: rancherd-server
-        enabled: yes
-        state: started
+  - name: start rancherd-server
+    service:
+      name: rancherd-server
+      enabled: yes
+      state: started
+  
