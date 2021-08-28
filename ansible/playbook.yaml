@@ -1,36 +1,24 @@
 ---
-- hosts: all
-  become: yes
-  gather_facts: False
-
-  tasks:
-  - name: install python 2
-    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
-    retries: 5
-    delay: 15
-    register: result
-    until: result.rc == 0
-
-- hosts: webnodes
+- hosts: rancher
   become: yes
   gather_facts: no
   tasks:
-  - name: ensure nginx is at the latest version
-    apt:
-      name: nginx
-      state: present
-  - name: write the nginx config file
-    template:
-      src: index.html.j2
-      dest: /var/www/html/index.html
+  - name: Update repositories cache
+    update_cache: yes
+
+  - name: download rancherd installation script
+    get_url:
+      url: https://get.rancher.io
+      dest: /tmp/rancherd_install.sh
+
+  - name: Execute the rancherd_install.sh
+    shell: /tmp/rancherd_install.sh
     notify:
-    - restart nginx
-  - name: ensure nginx is running
-    service:
-      name: nginx
-      state: started
+    - start rancherd-server
+
   handlers:
-    - name: restart nginx
+    - name: start rancherd-server
       service:
-        name: nginx
-        state: restarted
+        name: rancherd-server
+        enabled: yes
+        state: started
