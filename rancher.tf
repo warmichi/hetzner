@@ -1,6 +1,6 @@
 resource "null_resource" "run_ansible" {
-    provisioner "local-exec" {
-    command = "ansible-playbook -i ~/inventory ~/ansible/playbook.yml "
+  provisioner "local-exec" {
+  command = "ansible-playbook -i ~/inventory ~/ansible/playbook.yml "
   }
   depends_on = [
     hetznerdns_record.rancher
