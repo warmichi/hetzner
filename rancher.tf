@@ -1,6 +1,6 @@
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
-    command = "ansible-playbook -i ${path.root}/inventory ${path.root}/ansible/playbook.yaml"
+    command = "ansible-playbook -i ${path.root}/inventory ${path.root}/ansible/playbook.yaml --key-file ${var.HCLOUD_SSH_RANCHER_PUBLIC_KEY}"
   }
   depends_on = [
     hetznerdns_record.rancher
