@@ -1,6 +1,6 @@
 resource "null_resource" "run_ansible" {
     provisioner "local-exec" {
-    inline = [
+    command = [
       "ansible-playbook -i ~/inventory ~/ansible/playbook.yml ",
     ]
   }
