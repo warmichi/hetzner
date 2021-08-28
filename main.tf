@@ -28,7 +28,7 @@ resource "hcloud_server" "rancher" {
   }
 
   ssh_keys = [
-    hcloud_ssh_key.rancher.id,
+    hcloud_ssh_key.rancher.id
   ]
 
   # **Note**: the depends_on is important when directly attaching the
