@@ -8,6 +8,8 @@ resource "null_resource" "run_ansible" {
   }
   depends_on = [
     hetznerdns_record.rancher
+    null_resource.provisioner,
+    hcloud_server.rancher,
   ]
 }
 # resource "null_resource" "wait_for_rancher" {
