@@ -15,7 +15,7 @@ resource "hcloud_network_subnet" "network_subnet" {
   ip_range     = local.ip_range
 }
 
-resource "hcloud_server" "rancher" "main" {
+resource "hcloud_server" "rancher" {
   count       = local.rancher_node_count
   name        = local.rancher_hostname
   server_type = local.hetzner_server_type
