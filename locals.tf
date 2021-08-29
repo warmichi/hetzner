@@ -5,7 +5,7 @@ resource "random_id" "id" {
 locals {
   rancher_cluster_name = "rancher"
   rancher_version      = "v2.5.9"
-  rancher_node_count   = 1
+  rancher_node_count   = 2
   rancher_hostname     = "${local.rancher_cluster_name}-${random_id.id.hex}"
   rancher_api_url      = "https://${local.rancher_hostname}.${local.domain}:8443"
 
