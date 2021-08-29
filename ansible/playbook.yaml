@@ -6,6 +6,7 @@
   - name: Update repositories cache
     apt:
       update_cache: yes
+      cache_valid_time: 3600
 
   - name: download rancherd installation script
     get_url:
