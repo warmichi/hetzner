@@ -21,7 +21,7 @@ resource "hcloud_server" "rancher" {
   server_type = local.hetzner_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
-  user_data   = data.template_file.cloud_init.rendered
+  # user_data   = data.template_file.cloud_init.rendered
 
   network {
     network_id = hcloud_network.network.id
