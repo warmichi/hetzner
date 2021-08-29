@@ -12,6 +12,7 @@
     get_url:
       url: https://get.rancher.io
       dest: /tmp/rancherd_install.sh
+      mode: 0755
 
   - name: Execute the rancherd_install.sh
     shell: /tmp/rancherd_install.sh
