@@ -1,6 +1,6 @@
 resource "null_resource" "run_ansible" {
   provisioner "local-exec" {
-    command = "ansible-playbook -i ${path.root}/inventory ${path.root}/ansible/playbook.yaml"
+    command = "sleep 60 && ansible-playbook -i ${path.root}/inventory ${path.root}/ansible/playbook.yaml"
     environment = {
       ANSIBLE_PRIVATE_KEY_FILE  = "${var.HCLOUD_SSH_RANCHER_PRIVATE_KEY}"
       ANSIBLE_HOST_KEY_CHECKING = "False"
