@@ -7,7 +7,7 @@ resource "null_resource" "run_ansible" {
     }
   }
   depends_on = [
-    hetznerdns_record.rancher
+    hetznerdns_record.rancher,
     null_resource.provisioner,
     hcloud_server.rancher,
   ]
