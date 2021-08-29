@@ -17,11 +17,11 @@
   - name: Execute the rancherd_install.sh
     shell: /tmp/rancherd_install.sh
     notify:
-    - start rancherd-server
+    - systemd enable and start rancherd-server
 
   handlers:
-  - name: start rancherd-server
-    service:
+  - name: systemd enable and start rancherd-server
+    ansible.builtin.systemd:
       name: rancherd-server
       enabled: yes
       state: started
