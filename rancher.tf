@@ -1,4 +1,8 @@
 resource "null_resource" "run_ansible" {
+  triggers = {
+    hcloud_server_ids = join(",", hcloud_server.rancher.*.id)
+  }
+
   provisioner "local-exec" {
     command = "sleep 60 && ansible-playbook -i ${path.root}/inventory ${path.root}/ansible/playbook.yaml"
     environment = {
