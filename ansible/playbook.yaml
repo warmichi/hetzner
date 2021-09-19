@@ -20,7 +20,7 @@
     notify:
     - systemd enable and start rancherd-server
     environment:
-      - INSTALL_RANCHERD_VERSION: {{ lookup('env', 'INSTALL_RANCHERD_VERSION') }}
+      - INSTALL_RANCHERD_VERSION: "{{ lookup('env', 'INSTALL_RANCHERD_VERSION') }}"
 
   handlers:
   - name: systemd enable and start rancherd-server
