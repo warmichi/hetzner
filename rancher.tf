@@ -8,6 +8,7 @@ resource "null_resource" "run_ansible" {
     environment = {
       ANSIBLE_PRIVATE_KEY_FILE  = "${var.HCLOUD_SSH_RANCHER_PRIVATE_KEY}"
       ANSIBLE_HOST_KEY_CHECKING = "False"
+      INSTALL_RANCHERD_VERSION = "${local.rancher_version}"
     }
   }
   depends_on = [
