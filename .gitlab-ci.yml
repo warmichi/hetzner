@@ -15,6 +15,11 @@ include:
     TF_VAR_HCLOUD_SSH_RANCHER_PUBLIC_KEY:
       vault: infra/prod/hetzner/HCLOUD_SSH_RANCHER_PUBLIC_KEY@secret
       file: false
+    TF_VAR_HCLOUD_SSH_WARMICHI_PRIVATE_KEY:
+      vault: infra/prod/hetzner/HCLOUD_SSH_WARMICHI_PRIVATE_KEY@secret
+    TF_VAR_HCLOUD_SSH_WARMICHI_PUBLIC_KEY:
+      vault: infra/prod/hetzner/HCLOUD_SSH_WARMICHI_PUBLIC_KEY@secret
+      file: false
     TF_VAR_RANCHER_UI_PASSWORD:
       vault: infra/prod/hetzner/RANCHER_UI_PASSWORD@secret
       file: false

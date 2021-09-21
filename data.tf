@@ -1,8 +1,7 @@
 data "template_file" "cloud_init" {
   template = file("${path.module}/files/cloud-config.yaml")
   vars = {
-    RANCHER_VERSION     = local.rancher_version
-    RANCHER_TOKEN_KEY   = var.RANCHER_TOKEN_KEY
-    RANCHER_UI_PASSWORD = var.RANCHER_UI_PASSWORD
+    HCLOUD_SSH_WARMICHI_PUBLIC_KEY = var.HCLOUD_SSH_WARMICHI_PUBLIC_KEY
+    HCLOUD_SSH_WARMICHI_PRIVATE_KEY = var.HCLOUD_SSH_WARMICHI_PRIVATE_KEY
   }
 }

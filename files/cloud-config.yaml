@@ -1,21 +1,10 @@
 #cloud-config
 
-# set persistent env-variables and create token file
-write_files:
-- path: /root/.profile
-  content: |
-    export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
-  append: true
-- path: /etc/rancher/rke2/config.yaml
-  content: |
-    token: ${RANCHER_TOKEN_KEY}
-  append: true
-
-
-# install rancher using ranherd
-runcmd:
-- apt-get update
-- curl -sfL https://get.rancher.io | INSTALL_RANCHERD_VERSION=${RANCHER_VERSION} sh -
-- systemctl enable rancherd-server.service --now
-- rancherd reset-admin --password ${RANCHER_UI_PASSWORD}
+users:
+  - name: warmichi
+    groups: users, admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${HCLOUD_SSH_WARMICHI_PUBLIC_KEY}
 
