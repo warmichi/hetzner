@@ -28,7 +28,7 @@ resource "hcloud_server" "k8s_control_plane" {
   }
 
   ssh_keys = [
-    hcloud_ssh_key.rancher.id
+    hcloud_ssh_key.root.id
   ]
 
   # **Note**: the depends_on is important when directly attaching the
