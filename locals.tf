@@ -3,11 +3,9 @@ resource "random_id" "id" {
 }
 
 locals {
-  rancher_cluster_name = "rancher"
-  rancher_version      = "v2.5.8"
-  rancher_node_count   = 1
-  rancher_hostname     = "${local.rancher_cluster_name}-${random_id.id.hex}"
-  rancher_api_url      = "https://${local.rancher_hostname}.${local.domain}:8443"
+  k8s_cluster_name          = "first"
+  k8s_control_plane_count   = 1
+  k8s_hostname              = "${local.k8s_cluster_name}-${random_id.id.hex}"
 
   hetzner_server_type = "cx21"
   hetzner_image       = "ubuntu-20.04"

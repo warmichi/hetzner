@@ -1,10 +1,10 @@
-resource "hcloud_ssh_key" "rancher" {
-  name       = local.rancher_cluster_name
-  public_key = var.HCLOUD_SSH_RANCHER_PUBLIC_KEY
+resource "hcloud_ssh_key" "root" {
+  name       = local.k8s_cluster_name
+  public_key = var.HCLOUD_SSH_ROOT_PUBLIC_KEY
 }
 
 resource "hcloud_network" "network" {
-  name     = local.rancher_cluster_name
+  name     = local.k8s_cluster_name
   ip_range = local.ip_range
 }
 
@@ -15,9 +15,9 @@ resource "hcloud_network_subnet" "network_subnet" {
   ip_range     = local.ip_range
 }
 
-resource "hcloud_server" "rancher" {
-  count       = local.rancher_node_count
-  name        = local.rancher_hostname
+resource "hcloud_server" "k8s_control_plane" {
+  count       = local.k8s_control_plane_count
+  name        = local.k8s_hostname
   server_type = local.hetzner_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
