@@ -21,6 +21,11 @@
               overlay
               br_netfilter
 
+  - name: Create sysctl config file
+    file:
+      path: "/etc/sysctl.d/99-kubernetes-cri.conf"
+      state: "touch"
+
   - name: Set sysctl params
     blockinfile:
       path: "/etc/sysctl.d/99-kubernetes-cri.conf"
