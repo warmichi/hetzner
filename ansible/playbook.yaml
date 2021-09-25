@@ -1,5 +1,5 @@
 ---
-- hosts: k8s_control_plane
+- hosts: all_k8s_computes
   become: yes
   gather_facts: no
 
