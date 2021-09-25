@@ -3,9 +3,9 @@ resource "random_id" "id" {
 }
 
 locals {
-  k8s_cluster_name          = "first"
-  k8s_control_plane_count   = 1
-  k8s_hostname              = "${local.k8s_cluster_name}-${random_id.id.hex}"
+  k8s_cluster_name        = "first"
+  k8s_control_plane_count = 1
+  k8s_hostname            = "${local.k8s_cluster_name}-${random_id.id.hex}"
 
   hetzner_server_type = "cx21"
   hetzner_image       = "ubuntu-20.04"
