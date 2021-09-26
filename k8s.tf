@@ -5,8 +5,8 @@ resource "null_resource" "run_ansible" {
 
   provisioner "local-exec" {
     command = <<EOF
-  sleep 60
-  chmod 600 ${var.HCLOUD_SSH_ROOT_PRIVATE_KEY}
+  sleep 60 &&
+  chmod 600 ${var.HCLOUD_SSH_ROOT_PRIVATE_KEY} &&
   ansible-playbook -i ${path.root}/inventory ${path.root}/ansible/playbook.yaml
   EOF
     environment = {
