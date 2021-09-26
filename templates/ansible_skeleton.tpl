@@ -1,5 +1,5 @@
-[all:vars]
-ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+#[all:vars]
+#ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
 # [k8s_control_plane]
 
