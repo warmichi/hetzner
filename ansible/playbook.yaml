@@ -61,5 +61,3 @@
       name: containerd
       enabled: yes
       state: restarted
-
-    
