@@ -5,7 +5,7 @@ resource "random_id" "id" {
 locals {
   kube_cluster_name = "my"
 
-  kube_control_plane_count    = 2
+  kube_control_plane_count    = 1
   kube_control_plane_hostname = "${local.kube_cluster_name}-control-plane-${random_id.id.hex}"
 
   kube_worker_count    = 1
