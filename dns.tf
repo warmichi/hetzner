@@ -4,7 +4,7 @@ data "hetznerdns_zone" "dns_zone" {
 
 resource "hetznerdns_record" "kube_control_plane" {
   zone_id  = data.hetznerdns_zone.dns_zone.id
-  for_each = hcloud_server.kube_control_plane.*.id
+  for_each = join("",hcloud_server.kube_control_plane)
   name     = each.value.name
   value    = each.value.ipv4_address
   type     = "A"
