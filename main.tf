@@ -18,7 +18,7 @@ resource "hcloud_network_subnet" "network_subnet" {
 resource "hcloud_server" "kube_control_plane" {
   count       = local.kube_control_plane_count
   name        = local.kube_control_plane_hostname
-  server_type = local.hetzner_server_type
+  server_type = local.hetzner_control_plane_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
   user_data   = data.template_file.cloud_init.rendered
@@ -43,7 +43,7 @@ resource "hcloud_server" "kube_control_plane" {
 resource "hcloud_server" "kube_worker" {
   count       = local.kube_worker_count
   name        = local.kube_worker_hostname
-  server_type = local.hetzner_server_type
+  server_type = local.hetzner_worker_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
   user_data   = data.template_file.cloud_init.rendered

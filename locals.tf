@@ -11,7 +11,8 @@ locals {
   kube_worker_count    = 1
   kube_worker_hostname = "${local.kube_cluster_name}-worker-${random_id.id.hex}"
 
-  hetzner_server_type = "cx21"
+  hetzner_worker_server_type = "cx21"
+  hetzner_control_plane_type = "cx21"
   hetzner_image       = "ubuntu-20.04"
   hetzner_datacenter  = "nbg1"
   hetzener_ssh_user   = "root"
