@@ -17,7 +17,32 @@ resource "hcloud_network_subnet" "network_subnet" {
 
 resource "hcloud_server" "kube_control_plane" {
   count       = local.kube_control_plane_count
-  name        = local.kube_hostname
+  name        = local.kube_control_plane_hostname
+  server_type = local.hetzner_server_type
+  image       = local.hetzner_image
+  location    = local.hetzner_datacenter
+  user_data   = data.template_file.cloud_init.rendered
+
+  network {
+    network_id = hcloud_network.network.id
+  }
+
+  ssh_keys = [
+    hcloud_ssh_key.root.id
+  ]
+
+  # **Note**: the depends_on is important when directly attaching the
+  # server to a network. Otherwise Terraform will attempt to create
+  # server and sub-network in parallel. This may result in the server
+  # creation failing randomly.
+  depends_on = [
+    hcloud_network_subnet.network_subnet
+  ]
+}
+
+resource "hcloud_server" "kube_worker" {
+  count       = local.kube_worker_count
+  name        = local.kube_worker_hostname
   server_type = local.hetzner_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
