@@ -5,7 +5,7 @@ data "template_file" "ansible_kube_hosts" {
 
   vars = {
     node_name    = element(hcloud_server.kube_control_plane.*.name, count.index)
-    ansible_user = local.hetzener_ssh_user
+    ansible_user = local.hetzner_ssh_user
     ip           = element(hcloud_server.kube_control_plane.*.ipv4_address, count.index)
   }
 }

@@ -15,7 +15,7 @@ locals {
   hetzner_control_plane_type = "cx21"
   hetzner_image              = "ubuntu-20.04"
   hetzner_datacenter         = "nbg1"
-  hetzener_ssh_user          = "root"
+  hetzner_ssh_user           = "root"
 
   ip_range     = "192.168.0.0/16"
   network_zone = "eu-central"
