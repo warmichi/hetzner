@@ -1,3 +1,3 @@
 output "env-dynamic-url" {
-  value = local.k8s_cluster_name
+  value = local.kube_cluster_name
 }

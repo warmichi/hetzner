@@ -1,6 +1,6 @@
 resource "null_resource" "run_ansible" {
   triggers = {
-    hcloud_server_ids = join(",", hcloud_server.k8s_control_plane.*.id)
+    hcloud_server_ids = join(",", hcloud_server.kube_control_plane.*.id)
   }
 
   provisioner "local-exec" {
@@ -11,8 +11,8 @@ resource "null_resource" "run_ansible" {
     }
   }
   depends_on = [
-    hetznerdns_record.k8s_control_plane,
-    hcloud_server.k8s_control_plane,
+    hetznerdns_record.kube_control_plane,
+    hcloud_server.kube_control_plane,
   ]
 }
 

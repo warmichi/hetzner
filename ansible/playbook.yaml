@@ -1,5 +1,5 @@
 ---
-- hosts: all_k8s_computes
+- hosts: k8s_cluster:children
   become: yes
   gather_facts: no
 

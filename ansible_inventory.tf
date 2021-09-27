@@ -1,12 +1,12 @@
-data "template_file" "ansible_web_hosts" {
-  count      = local.k8s_control_plane_count
+data "template_file" "ansible_kube_hosts" {
+  count      = local.kube_control_plane_count
   template   = file("${path.root}/templates/ansible_hosts.tpl")
-  depends_on = [hcloud_server.k8s_control_plane]
+  depends_on = [hcloud_server.kube_control_plane]
 
   vars = {
-    node_name    = element(hcloud_server.k8s_control_plane.*.name, count.index)
+    node_name    = element(hcloud_server.kube_control_plane.*.name, count.index)
     ansible_user = local.hetzener_ssh_user
-    ip           = element(hcloud_server.k8s_control_plane.*.ipv4_address, count.index)
+    ip           = element(hcloud_server.kube_control_plane.*.ipv4_address, count.index)
   }
 }
 
@@ -14,7 +14,7 @@ data "template_file" "ansible_skeleton" {
   template = file("${path.root}/templates/ansible_skeleton.tpl")
 
   vars = {
-    k8s_control_plane_hosts_def = join("", data.template_file.ansible_web_hosts.*.rendered)
+    kube_control_plane_hosts_def = join("", data.template_file.ansible_kube_hosts.*.rendered)
   }
 }
 

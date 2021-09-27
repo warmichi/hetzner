@@ -1,10 +1,10 @@
 resource "hcloud_ssh_key" "root" {
-  name       = local.k8s_cluster_name
+  name       = local.kube_cluster_name
   public_key = var.HCLOUD_SSH_ROOT_PUBLIC_KEY
 }
 
 resource "hcloud_network" "network" {
-  name     = local.k8s_cluster_name
+  name     = local.kube_cluster_name
   ip_range = local.ip_range
 }
 
@@ -15,9 +15,9 @@ resource "hcloud_network_subnet" "network_subnet" {
   ip_range     = local.ip_range
 }
 
-resource "hcloud_server" "k8s_control_plane" {
-  count       = local.k8s_control_plane_count
-  name        = local.k8s_hostname
+resource "hcloud_server" "kube_control_plane" {
+  count       = local.kube_control_plane_count
+  name        = local.kube_hostname
   server_type = local.hetzner_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
