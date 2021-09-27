@@ -5,8 +5,8 @@ data "hetznerdns_zone" "dns_zone" {
 resource "hetznerdns_record" "kube_control_plane" {
   zone_id  = data.hetznerdns_zone.dns_zone.id
   for_each = hcloud_server.kube_control_plane
-  name     = each.name
-  value    = each.ipv4_address
+  name     = each.value.name
+  value    = each.value.ipv4_address
   type     = "A"
   ttl      = 60
 }
