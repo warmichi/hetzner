@@ -3,12 +3,12 @@ data "hetznerdns_zone" "dns_zone" {
 }
 
 resource "hetznerdns_record" "kube_control_plane" {
-  count    = local.kube_control_plane_count
-  zone_id  = data.hetznerdns_zone.dns_zone.id
-  name     = hcloud_server.kube_control_plane[count.index].name
-  value    = hcloud_server.kube_control_plane[count.index].ipv4_address
-  type     = "A"
-  ttl      = 60
+  count   = local.kube_control_plane_count
+  zone_id = data.hetznerdns_zone.dns_zone.id
+  name    = hcloud_server.kube_control_plane[count.index].name
+  value   = hcloud_server.kube_control_plane[count.index].ipv4_address
+  type    = "A"
+  ttl     = 60
 }
 
 # resource "hetznerdns_record" "kube_control_plane_cname" {
