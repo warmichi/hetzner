@@ -3,10 +3,10 @@ data "hetznerdns_zone" "dns_zone" {
 }
 
 resource "hetznerdns_record" "kube_control_plane" {
+  count    = locals.kube_control_plane_count
   zone_id  = data.hetznerdns_zone.dns_zone.id
-  for_each = hcloud_server.kube_control_plane.*.name
-  name     = each.value.name
-  value    = each.value.ipv4_address
+  name     = hcloud_server.kube_control_plane[count.index].name
+  value    = hcloud_server.kube_control_plane[count.index].ipv4_address
   type     = "A"
   ttl      = 60
 }
