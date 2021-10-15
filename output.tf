@@ -3,5 +3,5 @@ output "env-dynamic-url" {
 }
 
 output "test" {
-  value = hcloud_server.kube_control_plane
+  value = [for hcloud_server in hcloud_server.kube_control_plane : hcloud_server.name => hcloud]
 }
