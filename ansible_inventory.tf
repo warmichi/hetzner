@@ -13,8 +13,8 @@ data "template_file" "ansible_kube_hosts" {
 data "template_file" "ansible_skeleton" {
   template = file("${path.root}/templates/ansible_skeleton.tpl")
 
-  vars = {
-    kube_control_plane_hosts_def = join("", data.template_file.ansible_kube_hosts.*.rendered)
+    vars = {
+      kube_control_plane_hosts_def = join("", data.template_file.ansible_kube_hosts.*.rendered)
     # kube_all_hosts               = join("", hcloud_server.kube_control_plane.*.name, hcloud_server.kube_worker.*.name)
   }
 }
