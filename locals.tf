@@ -1,7 +1,3 @@
-resource "random_id" "id" {
-  byte_length = 8
-}
-
 locals {
   kube_cluster_name = "my"
 
