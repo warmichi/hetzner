@@ -17,7 +17,7 @@ resource "hcloud_network_subnet" "network_subnet" {
 
 resource "hcloud_server" "kube_control_plane" {
   count       = local.kube_control_plane_count
-  name        = local.kube_control_plane_hostname
+  name        = "${local.kube_cluster_name}-control-plane-${random_id.id.hex}"
   server_type = local.hetzner_control_plane_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
