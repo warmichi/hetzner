@@ -6,9 +6,7 @@ locals {
   kube_cluster_name = "my"
 
   kube_control_plane_count = 2
-
-  kube_worker_count    = 1
-  kube_worker_hostname = "${local.kube_cluster_name}-worker-${random_id.id.hex}"
+  kube_worker_count        = 1
 
   hetzner_worker_server_type = "cx21"
   hetzner_control_plane_type = "cx21"

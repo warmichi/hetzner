@@ -42,7 +42,7 @@ resource "hcloud_server" "kube_control_plane" {
 
 resource "hcloud_server" "kube_worker" {
   count       = local.kube_worker_count
-  name        = local.kube_worker_hostname
+  name        = "${local.kube_cluster_name}-worker-${random_id.id.hex}"
   server_type = local.hetzner_worker_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter
