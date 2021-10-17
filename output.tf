@@ -3,5 +3,8 @@ output "env-dynamic-url" {
 }
 
 output "yo" {
-  value = data.template_file.ansible_skeleton.rendered
+  value = data.template_file.ansible_skeleto.rendered
+}
+output "test" {
+  value = data.template_file.ansible_kube_hosts.*.rendered
 }
