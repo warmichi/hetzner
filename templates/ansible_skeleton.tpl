@@ -8,3 +8,12 @@ ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o StrictHostKeyCheckin
 ${kube_control_plane_hosts_def}
 
 
+---
+
+kube_control_plane:
+  hosts:
+    ${kube_control_plane_hosts_def}
+
+k8s_cluster:
+  children:
+    kube_control_plane:
