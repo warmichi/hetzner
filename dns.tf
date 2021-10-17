@@ -18,5 +18,3 @@ resource "hetznerdns_record" "kube_control_plane" {
 #   type    = "CNAME"
 #   ttl     = 60
 # }
-
-# for_each = join("", hcloud_server.kube_control_plane)  
