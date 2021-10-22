@@ -15,8 +15,8 @@ data "template_file" "ansible_skeleton" {
 
   vars = {
     ansible_all_kube_nodes_def     = join("", data.template_file.ansible_all_kube_nodes.*.rendered)
-    ansible_kube_control_plane_def = element(hcloud_server.kube_control_plane.*.name, count.index)
-    ansible_kube_node_def          = element(hcloud_server.kube_node.*.name, count.index)
+    ansible_kube_control_plane_def = join("", hcloud_server.kube_control_plane.*.name)
+    ansible_kube_node_def          = join("", hcloud_server.kube_node.*.name)
     ansible_user                   = local.hetzner_ssh_user
   
     # kube_all_hosts               = join("", hcloud_server.kube_control_plane.*.name, hcloud_server.kube_worker.*.name)
