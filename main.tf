@@ -40,9 +40,9 @@ resource "hcloud_server" "kube_control_plane" {
   ]
 }
 
-resource "hcloud_server" "kube_worker" {
+resource "hcloud_server" "node" {
   count       = local.kube_worker_count
-  name        = "${local.kube_cluster_name}-worker-${count.index}"
+  name        = "${local.kube_cluster_name}-node-${count.index}"
   server_type = local.hetzner_worker_server_type
   image       = local.hetzner_image
   location    = local.hetzner_datacenter

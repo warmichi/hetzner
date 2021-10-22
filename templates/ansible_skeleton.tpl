@@ -1,8 +1,14 @@
 ---
+all:
+${ansible_all_kube_nodes_def}
 
 kube_control_plane:
   hosts:
-${kube_control_plane_hosts_def}
+${ansible_kube_control_plane_def}:
+
+kube_node:
+  hosts:
+${ansible_kube_node_def}:
 
 k8s_cluster:
   children:
