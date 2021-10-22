@@ -4,7 +4,7 @@ data "template_file" "ansible_all_kube_nodes" {
   depends_on = [hcloud_server.kube_control_plane]
 
   vars = {
-    node_name    = join("", element(hcloud_server.kube_control_plane.*.name, count.index) ,element(hcloud_server.kube_node.*.name, count.index))
+    node_name    = join("", element(hcloud_server.kube_control_plane.*.name, count.index), element(hcloud_server.kube_node.*.name, count.index))
     ansible_user = local.hetzner_ssh_user
     ip           = element(hcloud_server.kube_control_plane.*.ipv4_address, count.index)
   }
