@@ -1,10 +1,3 @@
-# variable ccoming from env
-# variable "RANCHER_TOKEN_KEY" {
-# }
-
-# variable "RANCHER_UI_PASSWORD" {
-# }
-
 variable "HCLOUD_SSH_ROOT_PUBLIC_KEY" {
 }
 

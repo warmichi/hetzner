@@ -10,6 +10,15 @@
 #   }
 # }
 
+variable "ansible_kube_control_plane" {
+  count = local.kube_control_plane_count
+  type  = "map"
+
+  default = {
+    element(hcloud_server.kube_control_plane.*.name, count.index) = element(hcloud_server.kube_control_plane.*.ipv4_address, count.index)
+  }
+}
+
 data "template_file" "ansible_skeleton" {
   template = file("${path.root}/templates/ansible_skeleton.tpl")
 
