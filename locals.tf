@@ -1,7 +1,7 @@
 locals {
   kube_cluster_name = "my"
 
-  kube_control_plane_count = 2
+  kube_control_plane_count = 3
   kube_worker_count        = 1
 
   hetzner_worker_server_type = "cx21"
