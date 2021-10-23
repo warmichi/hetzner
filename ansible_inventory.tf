@@ -15,7 +15,7 @@ data "template_file" "ansible_skeleton" {
 
   vars = {
     connection_strings_contol_plane = join("\n", formatlist("%s ansible_host=%s", hcloud_server.kube_control_plane.*.name, hcloud_server.kube_control_plane.*.ipv4_address))
-    connection_strings_node         = join("\n", formatlist("%s ansible_host=%s", hcloud_server.kube_node.*.name, hcloud_server.kube_control_plane.*.name))
+    connection_strings_node         = join("\n", formatlist("%s ansible_host=%s", hcloud_server.kube_node.*.name, hcloud_server.kube_nocd.*.ipv4_address))
     list_control_plane              = join("\n", hcloud_server.kube_control_plane.*.name)
     list_node                       = join("\n", hcloud_server.kube_node.*.name)
     # ansible_all_kube_nodes_def     = join("", data.template_file.ansible_all_kube_nodes.*.rendered)
