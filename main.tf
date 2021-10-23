@@ -1,6 +1,6 @@
 resource "hcloud_ssh_key" "root" {
   name       = local.kube_cluster_name
-  public_key = var.HCLOUD_SSH_ROOT_PUBLIC_KEY
+  public_key = var.hcloud_ssh_root_public_key
 }
 
 resource "hcloud_network" "network" {
