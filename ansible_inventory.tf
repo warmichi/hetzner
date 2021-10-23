@@ -10,31 +10,26 @@
 #   }
 # }
 
-variable "ansible_kube_control_plane" {
-  count = local.kube_control_plane_count
-  type  = "map"
+data "template_file" "ansible_skeleton" {
+  template = file("${path.root}/templates/ansible_skeleton.tpl")
 
-  default = {
-    element(hcloud_server.kube_control_plane.*.name, count.index) = element(hcloud_server.kube_control_plane.*.ipv4_address, count.index)
+  vars = {
+    connection_strings_contol_plane = join("\n", formatlist("%s ansible_host=%s", hcloud_server.kube_control_plane.*.name, hcloud_server.kube_control_plane.*.ipv4_address))
+    connection_strings_node         = join("\n", formatlist("%s ansible_host=%s", hcloud_server.kube_node.*.name, hcloud_server.kube_control_plane.*.name))
+    list_control_plane              = join("\n",  hcloud_server.kube_control_plane.*.name)
+    list_node                       = join("\n",  hcloud_server.kube_node.*.name)
+    # ansible_all_kube_nodes_def     = join("", data.template_file.ansible_all_kube_nodes.*.rendered)
+    # ansible_all_kube_nodes_def     = zipmap(hcloud_server.kube_control_plane.*.name, hcloud_server.kube_control_plane.*.ipv4_address)
+    # ansible_kube_control_plane_def = join("", hcloud_server.kube_control_plane.*.name)
+    # ansible_kube_node_def          = join("", hcloud_server.kube_node.*.name)
+    # ansible_user                   = local.hetzner_ssh_user
+    # kube_all_hosts               = join("", hcloud_server.kube_control_plane.*.name, hcloud_server.kube_worker.*.name)
   }
 }
 
-# data "template_file" "ansible_skeleton" {
-#   template = file("${path.root}/templates/ansible_skeleton.tpl")
+resource "local_file" "ansible_inventory" {
+  depends_on = [data.template_file.ansible_skeleton]
 
-#   vars = {
-#     # ansible_all_kube_nodes_def     = join("", data.template_file.ansible_all_kube_nodes.*.rendered)
-#     ansible_all_kube_nodes_def     = zipmap(hcloud_server.kube_control_plane.*.name, hcloud_server.kube_control_plane.*.ipv4_address)
-#     ansible_kube_control_plane_def = join("", hcloud_server.kube_control_plane.*.name)
-#     ansible_kube_node_def          = join("", hcloud_server.kube_node.*.name)
-#     ansible_user                   = local.hetzner_ssh_user
-#     # kube_all_hosts               = join("", hcloud_server.kube_control_plane.*.name, hcloud_server.kube_worker.*.name)
-#   }
-# }
-
-# resource "local_file" "ansible_inventory" {
-#   depends_on = [data.template_file.ansible_skeleton]
-
-#   content  = data.template_file.ansible_skeleton.rendered
-#   filename = "${path.root}/inventory"
-# }
+  content  = data.template_file.ansible_skeleton.rendered
+  filename = "${path.root}/inventory"
+}

@@ -1,17 +1,13 @@
----
-all:
-${ansible_all_kube_nodes_def}
+[all]
+${connection_strings_control_plane}
+${connection_strings_node}
 
-kube_control_plane:
-  hosts:
-${ansible_kube_control_plane_def}:
+[kube_control_plane]
+${list_control_plane}
 
-kube_node:
-  hosts:
-${ansible_kube_node_def}:
+[kube_node]
+${list_node}
 
-k8s_cluster:
-  children:
-    kube_control_plane:
-  vars:
-    ansible_user: ${ansible_user}
+[k8s_cluster:children]
+kube_node
+kube_control_plane
