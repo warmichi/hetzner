@@ -5,9 +5,9 @@ resource "null_resource" "run_ansible" {
 
   provisioner "local-exec" {
     # command = "chmod 600 ${var.HCLOUD_SSH_ROOT_PRIVATE_KEY} && sleep 60 && ansible-playbook -i ${path.root}/inventory ${path.root}/ansible/playbook.yaml"
-    command = "chmod 600 ${var.HCLOUD_SSH_ROOT_PRIVATE_KEY} && sleep 60 && ansible-playbook -i ${path.root}/inventory cluster.yaml"
+    command = "chmod 600 ${var.hcloud_ssh_root_private_key} && sleep 60 && ansible-playbook -i ${path.root}/inventory cluster.yaml"
     environment = {
-      ANSIBLE_PRIVATE_KEY_FILE  = "${var.HCLOUD_SSH_ROOT_PRIVATE_KEY}"
+      ANSIBLE_PRIVATE_KEY_FILE  = "${var.hcloud_ssh_root_private_key}"
       ANSIBLE_HOST_KEY_CHECKING = "False"
     }
   }
