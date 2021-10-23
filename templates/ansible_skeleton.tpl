@@ -5,6 +5,9 @@ ${connection_strings_node}
 [kube_control_plane]
 ${list_control_plane}
 
+[etcd]
+${list_control_plane}
+
 [kube_node]
 ${list_node}
 
