@@ -6,5 +6,5 @@ users:
     sudo: ALL=(ALL) NOPASSWD:ALL
     shell: /bin/bash
     ssh_authorized_keys:
-      - ${HCLOUD_SSH_WARMICHI_PUBLIC_KEY}
+      - ${hcloud_ssh_warmichi_public_key}
 

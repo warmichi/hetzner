@@ -12,8 +12,3 @@ variable "hcloud_ssh_warmichi_public_key" {
   type        = string
   description = "Public warmichi ssh-key for Hetzner"
 }
-
-variable "hcloud_ssh_warmichi_private_key" {
-  type        = string
-  description = "Public warmichi ssh-key for Hetzner"
-}
