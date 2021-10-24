@@ -9,15 +9,18 @@ resource "null_resource" "run_ansible" {
       chmod 600 ${var.hcloud_ssh_root_private_key}
       sleep 60
 
-      # Bootstrap or scale cluster when enviroment variable is set 
-      if [ "$SCALE_CLUSTER" = true ] ; then
-        ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
-      else
+      # Bootstrap cluster when enviroment variable is set 
+      if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
         ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e kube_version=${var.kube_version}
       fi
 
+      # Scale cluster when enviroment variable is set 
+      if [ "$SCALE_KUBE_CLUSTER" = true ] ; then
+        ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
+      fi
+
       # Graceful Upgrade Cluster when enviroment variable is set
-      if [ "$UPGRADE_CLUSTER" = true ] ; then
+      if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
         ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e kube_version=${var.kube_version}
       fi
 
