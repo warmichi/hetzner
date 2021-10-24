@@ -40,7 +40,7 @@ variable "hetzner_datacenter" {
   default     = "nbg1"
 }
 
-variable "var.hetzner_ssh_user" {
+variable "hetzner_ssh_user" {
   type        = string
   description = "Hetzner ssh-user"
   default     = "root"
@@ -56,6 +56,12 @@ variable "ip_range" {
   type        = string
   description = "ip_range for Hetzner Network-Zone"
   default     = "192.168.0.0/16"
+}
+
+variable "domain" {
+  type = string
+  description = "Domain used for Server Hostnames"
+  default = "uwannah.com"
 }
 
 # Enviroment variables coming from vault
