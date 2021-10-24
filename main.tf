@@ -1,10 +1,10 @@
 resource "hcloud_placement_group" "kube_control_plane_group" {
-  name = "kube_control_plane"
+  name = "${var.kube_cluster_name}-control-plane"
   type = "spread"
 }
 
 resource "hcloud_placement_group" "kube_node_group" {
-  name = "kube_control_plane"
+  name = "${var.kube_cluster_name}-node"
   type = "spread"
 }
 
