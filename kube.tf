@@ -7,6 +7,9 @@ resource "null_resource" "run_ansible" {
     command = <<EOT
       chmod 600 ${var.hcloud_ssh_root_private_key} && sleep 60 && ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml
       chmod 600 ${var.hcloud_ssh_root_private_key} && sleep 60 && ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
+      if test -f "destroyed_nodes"; then
+        ansible-playbook -i ${path.root}/inventory /kubespray/remove-node.yml -b -v --extra-vars "node=$(cat destroyed_nodes | sed 's/^\|$//g'|paste -sd, - )"
+      fi
     EOT
 
     environment = {
