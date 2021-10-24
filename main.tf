@@ -1,26 +1,26 @@
 resource "hcloud_ssh_key" "root" {
-  name       = local.kube_cluster_name
+  name       = var.kube_cluster_name
   public_key = var.hcloud_ssh_root_public_key
 }
 
 resource "hcloud_network" "network" {
-  name     = local.kube_cluster_name
-  ip_range = local.ip_range
+  name     = var.kube_cluster_name
+  ip_range = var.ip_range
 }
 
 resource "hcloud_network_subnet" "network_subnet" {
   network_id   = hcloud_network.network.id
   type         = "server"
-  network_zone = local.network_zone
-  ip_range     = local.ip_range
+  network_zone = var.network_zone
+  ip_range     = var.ip_range
 }
 
 resource "hcloud_server" "kube_control_plane" {
-  count       = local.kube_control_plane_count
-  name        = "${local.kube_cluster_name}-control-plane-${count.index + 1}"
-  server_type = local.hetzner_control_plane_type
-  image       = local.hetzner_image
-  location    = local.hetzner_datacenter
+  count       = var.kube_control_plane_count
+  name        = "${var.kube_cluster_name}-control-plane-${count.index + 1}"
+  server_type = var.hetzner_control_plane_type
+  image       = var.hetzner_image
+  location    = var.hetzner_datacenter
   user_data   = data.template_file.cloud_init.rendered
 
   network {
@@ -41,11 +41,11 @@ resource "hcloud_server" "kube_control_plane" {
 }
 
 resource "hcloud_server" "kube_node" {
-  count       = local.kube_node_count
-  name        = "${local.kube_cluster_name}-node-${count.index + 1}"
-  server_type = local.hetzner_node_server_type
-  image       = local.hetzner_image
-  location    = local.hetzner_datacenter
+  count       = var.kube_node_count
+  name        = "${var.kube_cluster_name}-node-${count.index + 1}"
+  server_type = var.hetzner_node_server_type
+  image       = var.hetzner_image
+  location    = var.hetzner_datacenter
   user_data   = data.template_file.cloud_init.rendered
 
   network {
