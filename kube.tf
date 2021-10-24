@@ -4,7 +4,11 @@ resource "null_resource" "run_ansible" {
   }
 
   provisioner "local-exec" {
-    command = "chmod 600 ${var.hcloud_ssh_root_private_key} && sleep 60 && ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml"
+    command = <<EOT
+      chmod 600 ${var.hcloud_ssh_root_private_key} && sleep 60 && ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml
+      chmod 600 ${var.hcloud_ssh_root_private_key} && sleep 60 && ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
+    EOT
+
     environment = {
       ANSIBLE_PRIVATE_KEY_FILE  = "${var.hcloud_ssh_root_private_key}"
       ANSIBLE_HOST_KEY_CHECKING = "False"
