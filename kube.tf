@@ -12,7 +12,7 @@ resource "null_resource" "run_ansible" {
       # Bootstrap or scale cluster when enviroment variable is set 
       if [ "$SCALE_CLUSTER" = true ] ; then
         ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
-      then
+      else
         ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e kube_version=${var.kube_version}
       fi
 
