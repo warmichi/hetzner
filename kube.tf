@@ -1,6 +1,6 @@
 resource "null_resource" "run_ansible" {
   triggers = {
-    hcloud_server_ids = join(",", hcloud_server.kube_control_plane.*.id)
+    hcloud_server_ids = join(",", hcloud_server.kube_control_plane.*.id, hcloud_server.kube_node.*.id)
   }
 
   provisioner "local-exec" {
