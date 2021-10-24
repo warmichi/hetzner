@@ -4,6 +4,12 @@ variable "kube_cluster_name" {
   default     = "kube"
 }
 
+variable "kube_version" {
+  type = string
+  description = "Kubernetes Version"
+  default = "v1.21.5"
+}
+
 variable "kube_control_plane_count" {
   type        = number
   description = "Number of control-plane nodes"
