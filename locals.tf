@@ -2,7 +2,7 @@ locals {
   kube_cluster_name = "my"
 
   kube_control_plane_count = 3
-  kube_node_count        = 2
+  kube_node_count        = 1
 
   hetzner_node_server_type = "cx21"
   hetzner_control_plane_type = "cpx11"
