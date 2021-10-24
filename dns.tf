@@ -12,7 +12,7 @@ resource "hetznerdns_record" "kube_control_plane" {
 }
 
 resource "hetznerdns_record" "kube_node" {
-  count   = var.kube_node
+  count   = var.kube_node_count
   zone_id = data.hetznerdns_zone.dns_zone.id
   name    = hcloud_server.kube_node[count.index].name
   value   = hcloud_server.kube_node[count.index].ipv4_address
