@@ -1,9 +1,9 @@
-resource "hcloud_placement_group" "kube_control_plane" {
+resource "hcloud_placement_group" "kube_control_plane_group" {
   name = "kube_control_plane"
   type = "spread"
 }
 
-resource "hcloud_placement_group" "kube_node" {
+resource "hcloud_placement_group" "kube_node_group" {
   name = "kube_control_plane"
   type = "spread"
 }
@@ -32,7 +32,7 @@ resource "hcloud_server" "kube_control_plane" {
   image              = var.hetzner_image
   location           = var.hetzner_datacenter
   user_data          = data.template_file.cloud_init.rendered
-  placement_group_id = hcloud_placement_group.kube_control_plane.id
+  placement_group_id = hcloud_placement_group.kube_control_plane_group.id
 
   network {
     network_id = hcloud_network.network.id
@@ -58,7 +58,7 @@ resource "hcloud_server" "kube_node" {
   image              = var.hetzner_image
   location           = var.hetzner_datacenter
   user_data          = data.template_file.cloud_init.rendered
-  placement_group_id = hcloud_placement_group.kube_node.id
+  placement_group_id = hcloud_placement_group.kube_node_group.id
 
   network {
     network_id = hcloud_network.network.id
