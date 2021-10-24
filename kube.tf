@@ -26,7 +26,7 @@ resource "null_resource" "run_ansible" {
 
       # Destroy nodes
       if test -f "destroyed_nodes"; then
-        ansible-playbook -i ${path.root}/inventory /kubespray/remove-node.yml -b -v --extra-vars reset_nodes=false "node=$(cat destroyed_nodes | sed 's/^\|$//g'|paste -sd, - )"
+        ansible-playbook -i ${path.root}/inventory /kubespray/remove-node.yml -b -v --extra-vars reset_nodes=false node="$(cat destroyed_nodes | sed 's/^\|$//g'|paste -sd, - )"
       fi
     EOT
 
