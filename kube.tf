@@ -19,6 +19,7 @@ resource "null_resource" "run_ansible" {
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_CLUSTER" = true ] ; then
         ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e kube_version=${var.kube_version}
+      fi
 
       # Destroy nodes
       if test -f "destroyed_nodes"; then
