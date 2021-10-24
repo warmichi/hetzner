@@ -59,9 +59,9 @@ variable "ip_range" {
 }
 
 variable "domain" {
-  type = string
+  type        = string
   description = "Domain used for Server Hostnames"
-  default = "uwannah.com"
+  default     = "uwannah.com"
 }
 
 # Enviroment variables coming from vault
