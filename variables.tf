@@ -5,9 +5,9 @@ variable "kube_cluster_name" {
 }
 
 variable "kube_version" {
-  type = string
+  type        = string
   description = "Kubernetes Version"
-  default = "v1.21.5"
+  default     = "v1.21.5"
 }
 
 variable "kube_control_plane_count" {
