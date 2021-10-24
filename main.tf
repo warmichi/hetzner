@@ -67,7 +67,7 @@ resource "hcloud_server" "kube_node" {
   provisioner "local-exec" {
     when    = destroy
     command = <<EOT
-      ansible-playbook -i ${path.root}/inventory remove-node.yml -b -v --extra-vars "node=${self.name}"
+      ansible-playbook -i ${path.root}/inventory /kubespray/remove-node.yml -b -v --extra-vars "node=${self.name}"
     EOT
   }
 }
