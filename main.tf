@@ -80,6 +80,7 @@ resource "hcloud_server" "kube_node" {
     when    = destroy
     command = <<EOT
       echo "${self.name}" >> destroyed_nodes
+      mv ${path.root}/inventory ${path.root}/destroy_inventory
     EOT
   }
 }
