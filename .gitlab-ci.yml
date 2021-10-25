@@ -33,6 +33,7 @@ variables:
       file: false
 
 apply:
+  stage: apply
   script:
     - *gitlab-tf-backend
     - terraform apply -auto-approve
