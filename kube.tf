@@ -6,8 +6,8 @@ resource "null_resource" "run_ansible" {
 
   provisioner "local-exec" {
     command = <<EOT
-      chmod 600 ${var.hcloud_ssh_root_private_key}
-      sleep 60
+      # chmod 600 ${var.hcloud_ssh_root_private_key}
+      # sleep 60
 
       # Bootstrap cluster when enviroment variable is set 
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
