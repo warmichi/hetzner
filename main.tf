@@ -75,15 +75,11 @@ resource "hcloud_server" "kube_node" {
   depends_on = [
     hcloud_network_subnet.network_subnet
   ]
-
+  
   provisioner "local-exec" {
     when    = destroy
     command = <<EOT
-      ansible-playbook -i ${path.root}/inventory /kubespray/remove-node.yml -b -v --extra-vars "node=${self.name}"
+      echo "${self.name}" >> destroyed_nodes
     EOT
-    environment = {
-      ANSIBLE_PRIVATE_KEY_FILE  = "${var.hcloud_ssh_root_private_key}"
-      ANSIBLE_HOST_KEY_CHECKING = "False"
-    }
   }
 }
