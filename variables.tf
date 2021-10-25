@@ -19,7 +19,7 @@ variable "kube_control_plane_count" {
 variable "kube_node_count" {
   type        = number
   description = "Number of worker nodes"
-  default     = 1
+  default     = 3
 }
 
 variable "hetzner_control_plane_type" {
