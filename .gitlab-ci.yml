@@ -43,4 +43,8 @@ apply:
       SCALE_KUBE_CLUSTER, 
       UPGRADE_KUBE_CLUSTER
       ]
+  cache:
+    key: ansible_inventory_cache
+    paths:
+      - inventory
   when: manual
