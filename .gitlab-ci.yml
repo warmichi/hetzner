@@ -33,6 +33,12 @@ variables:
       file: false
 
 apply:
+  script:
+    - *gitlab-tf-backend
+    - terraform apply -auto-approve
+    - DYNAMIC_ENVIRONMENT_URL=$(terraform output -no-color env_dynamic_url)
+    - echo "DYNAMIC_ENVIRONMENT_URL=$DYNAMIC_ENVIRONMENT_URL" >> deploy.env
+    - chmod 600 $TF_VAR_hcloud_ssh_root_private_key
   artifacts:
     paths:
       - inventory
