@@ -75,7 +75,7 @@ resource "hcloud_server" "kube_node" {
   depends_on = [
     hcloud_network_subnet.network_subnet
   ]
-  
+
   provisioner "local-exec" {
     when    = destroy
     command = <<EOT
