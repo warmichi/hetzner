@@ -2,6 +2,17 @@ include:
   - project: 'warmichi/templates'
     file: '/terraform.gitlab-ci.yml'
 
+variables:
+  BOOTSTRAP_KUBE_CLUSTER:
+    value: "false"
+    description: "decide if the cluster should be bootstrapped."
+  SCALE_KUBE_CLUSTER:
+    value: "false"
+    description: "scale nodes in the cluster."
+  UPGRADE_KUBE_CLUSTER:
+    value: "false"
+    description: "Gracefully upgrade the cluster to the given version "
+
 .secrets:
   secrets:
     HCLOUD_TOKEN:
@@ -20,3 +31,16 @@ include:
     TF_VAR_hcloud_ssh_warmichi_public_key:
       vault: infra/prod/hetzner/HCLOUD_SSH_WARMICHI_PUBLIC_KEY@secret
       file: false
+
+apply:
+  artifacts:
+    paths:
+      - inventory
+  inherit:
+    default: true
+    variables: [
+      BOOTSTRAP_KUBE_CLUSTER, 
+      SCALE_KUBE_CLUSTER, 
+      UPGRADE_KUBE_CLUSTER
+      ]
+  when: manual
