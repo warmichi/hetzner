@@ -37,7 +37,7 @@ apply:
     paths:
       - inventory
   inherit:
-    default: true
+    default: false
     variables: [
       BOOTSTRAP_KUBE_CLUSTER, 
       SCALE_KUBE_CLUSTER, 
