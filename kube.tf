@@ -24,9 +24,11 @@ resource "null_resource" "run_ansible" {
         ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e kube_version=${var.kube_version}
       fi
 
-      # Destroy nodes
+      # Remove Kube-Nodes
       if test -f "destroyed_nodes"; then
-        ansible-playbook -i ${path.root}/inventory /kubespray/remove-node.yml -e allow_ungraceful_removal=true -e reset_nodes=false -e node="$(cat destroyed_nodes | sed 's/^\|$//g'|paste -sd, - )"
+        destroyed_nodes=$(cat destroyed_nodes | sed 's/^\|$//g'|paste -sd, - )
+        ansible-playbook -i ${path.root}/inventory -i $destroyed_nodes /kubespray/remove-node.yml \
+        -e node=$destroyed_nodes -e reset_nodes=false -e allow_ungraceful_removal=true -e skip_confirmation=true      
       fi
     EOT
 
