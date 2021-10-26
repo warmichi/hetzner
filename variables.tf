@@ -13,7 +13,7 @@ variable "kube_version" {
 variable "kube_control_plane_count" {
   type        = number
   description = "Number of control-plane nodes"
-  default     = 4
+  default     = 5
 }
 
 variable "kube_node_count" {
