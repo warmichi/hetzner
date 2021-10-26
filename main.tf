@@ -48,7 +48,7 @@ resource "hcloud_server" "kube_control_plane" {
       echo "${self.name}" >> destroyed_nodes
     EOT
   }
-  
+
   # **Note**: the depends_on is important when directly attaching the
   # server to a network. Otherwise Terraform will attempt to create
   # server and sub-network in parallel. This may result in the server
