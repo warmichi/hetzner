@@ -10,21 +10,25 @@ resource "null_resource" "run_ansible" {
 
       # Bootstrap cluster when enviroment variable is set 
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
+        echo "Bootstrap Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e kube_version=${var.kube_version}
       fi
 
       # Scale cluster when enviroment variable is set 
       if [ "$SCALE_KUBE_CLUSTER" = true ] ; then
+        echo "Scale Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
       fi
 
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
+        echo "Upgrade Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e kube_version=${var.kube_version}
       fi
 
       # Remove Kube-Nodes
       if test -f "destroyed_nodes"; then
+        echo "Remove Kube Nodes ..."
         destroyed_nodes=$(cat destroyed_nodes | sed 's/^\|$//g'|paste -sd, - )
         ansible-playbook -i ${path.root}/inventory -i $destroyed_nodes /kubespray/remove-node.yml \
         -e node=$destroyed_nodes -e reset_nodes=false -e allow_ungraceful_removal=true -e skip_confirmation=true      
