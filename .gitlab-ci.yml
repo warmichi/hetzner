@@ -54,6 +54,7 @@ apply:
     - terraform apply -auto-approve
     - DYNAMIC_ENVIRONMENT_URL=$(terraform output -no-color env_dynamic_url)
     - echo "DYNAMIC_ENVIRONMENT_URL=$DYNAMIC_ENVIRONMENT_URL" >> deploy.env
+    - sleep 86400
   artifacts:
     paths:
       - inventory
