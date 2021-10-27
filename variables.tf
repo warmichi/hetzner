@@ -34,6 +34,12 @@ variable "hetzner_node_server_type" {
   default     = "cx21"
 }
 
+variable "hetzner_lb_type" {
+  type        = string
+  description = "Hetzner Loadbalander type"
+  default     = "lb11"
+}
+
 variable "hetzner_image" {
   type        = string
   description = "Hetzner OS Image"
