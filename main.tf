@@ -33,7 +33,7 @@ resource "hcloud_load_balancer" "load_balancer" {
 
 resource "hcloud_load_balancer_network" "srvnetwork" {
   load_balancer_id = hcloud_load_balancer.load_balancer.id
-  network_id       = hcloud_network.network_subnet.id
+  network_id       = hcloud_network.network.id
 }
 
 resource "hcloud_server" "kube_control_plane" {
