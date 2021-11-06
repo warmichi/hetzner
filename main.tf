@@ -25,17 +25,6 @@ resource "hcloud_network_subnet" "network_subnet" {
   ip_range     = var.ip_range
 }
 
-resource "hcloud_load_balancer" "load_balancer" {
-  name               = "${var.kube_cluster_name}-lb"
-  load_balancer_type = var.hetzner_lb_type
-  location           = var.hetzner_datacenter
-}
-
-resource "hcloud_load_balancer_network" "srvnetwork" {
-  load_balancer_id = hcloud_load_balancer.load_balancer.id
-  network_id       = hcloud_network.network.id
-}
-
 resource "hcloud_server" "kube_control_plane" {
   count              = var.kube_control_plane_count
   name               = "${var.kube_cluster_name}-control-plane-${count.index + 1}"
