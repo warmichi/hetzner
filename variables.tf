@@ -4,6 +4,17 @@ variable "kube_cluster_name" {
   default     = "kube"
 }
 
+variable "kube_cluster_variables" {
+  type        = map(any)
+  description = "Additional Playbook Variables"
+  default = {
+    "kube_version"               = "v1.20.1"
+    "ingress_nginx_enabled"      = "true"
+    "ingress_nginx_host_network" = "false"
+    "cloud_provider"             = "external"
+  }
+}
+
 variable "kube_version" {
   type        = string
   description = "Kubernetes Version"
