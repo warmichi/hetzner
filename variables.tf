@@ -35,7 +35,7 @@ variable "kube_node_count" {
 
 variable "hetzner_control_plane_type" {
   type        = string
-  description = "Hetzner server type for worker nodes"
+  description = "Hetzner server type for control-plane nodes"
   default     = "cpx11"
 }
 
