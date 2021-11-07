@@ -10,10 +10,6 @@ variable "kube_cluster_variables" {
     kube_version               = "v1.20.1"
     cloud_provider             = "external"
     ingress_nginx_enabled      = true
-    ingress_nginx_host_network = true
-    # "ingress_nginx_insecure_port" = "80"
-    # "ingress_nginx_secure_port"   = "443"
-    # "ingress_nginx_namespace"     = "ingress-nginx"
   }
   type = object({
     kube_version               = string
