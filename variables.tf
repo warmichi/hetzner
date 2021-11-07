@@ -10,11 +10,13 @@ variable "kube_cluster_variables" {
     kube_version          = "v1.20.1"
     cloud_provider        = "external"
     ingress_nginx_enabled = true
+    ingress_nginx_class   = "nginx"
   }
   type = object({
     kube_version          = string
     cloud_provider        = string
     ingress_nginx_enabled = bool
+    ingress_nginx_class   = string
   })
 }
 
