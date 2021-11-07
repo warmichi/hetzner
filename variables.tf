@@ -7,16 +7,28 @@ variable "kube_cluster_name" {
 variable "kube_cluster_variables" {
   description = "Additional Playbook Variables"
   default = {
-    kube_version          = "v1.20.1"
-    cloud_provider        = "external"
+    kube_version = "v1.20.1"
+
+    cloud_provider = "external"
+
     ingress_nginx_enabled = true
     ingress_nginx_class   = "nginx"
+
+    argocd_enabled   = true
+    argocd_version   = "v2.1.6"
+    argocd_namespace = "argocd"
   }
   type = object({
-    kube_version          = string
-    cloud_provider        = string
+    kube_version = string
+
+    cloud_provider = string
+
     ingress_nginx_enabled = bool
     ingress_nginx_class   = string
+
+    argocd_enabled   = bool
+    argocd_version   = string
+    argocd_namespace = string
   })
 }
 
