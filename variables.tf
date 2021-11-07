@@ -7,14 +7,14 @@ variable "kube_cluster_name" {
 variable "kube_cluster_variables" {
   description = "Additional Playbook Variables"
   default = {
-    kube_version               = "v1.20.1"
-    cloud_provider             = "external"
-    ingress_nginx_enabled      = true
+    kube_version          = "v1.20.1"
+    cloud_provider        = "external"
+    ingress_nginx_enabled = true
   }
   type = object({
-    kube_version               = string
-    cloud_provider             = string
-    ingress_nginx_enabled      = bool
+    kube_version          = string
+    cloud_provider        = string
+    ingress_nginx_enabled = bool
   })
 }
 
