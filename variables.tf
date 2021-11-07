@@ -15,7 +15,6 @@ variable "kube_cluster_variables" {
     kube_version               = string
     cloud_provider             = string
     ingress_nginx_enabled      = bool
-    ingress_nginx_host_network = bool
   })
 }
 
