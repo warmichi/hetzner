@@ -29,9 +29,6 @@ variable "kube_cluster_variables" {
     argocd_enabled   = bool
     argocd_version   = string
     argocd_namespace = string
-
-    apiserver_loadbalancer_domain_name = string
-
   })
 }
 
