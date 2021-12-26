@@ -18,7 +18,6 @@ variable "kube_cluster_variables" {
     argocd_version   = "v2.2.1"
     argocd_namespace = "argocd"
     }
-  }
   type = object({
     kube_version = string
 
@@ -34,6 +33,7 @@ variable "kube_cluster_variables" {
     apiserver_loadbalancer_domain_name = string
 
   })
+}
 
 variable "kube_version" {
   type        = string
