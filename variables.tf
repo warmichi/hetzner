@@ -34,7 +34,6 @@ variable "kube_cluster_variables" {
     apiserver_loadbalancer_domain_name = string
 
   })
-}
 
 variable "kube_version" {
   type        = string
