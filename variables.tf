@@ -17,7 +17,7 @@ variable "kube_cluster_variables" {
     argocd_enabled   = true
     argocd_version   = "v2.2.1"
     argocd_namespace = "argocd"
-    }
+  }
   type = object({
     kube_version = string
 
