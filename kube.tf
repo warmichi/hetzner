@@ -18,7 +18,7 @@ resource "null_resource" "run_ansible" {
       if [ "$SCALE_KUBE_CLUSTER" = true ] ; then
         echo "Scale Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
-      fiar
+      fi
 
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
