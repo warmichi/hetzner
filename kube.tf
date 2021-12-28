@@ -11,14 +11,14 @@ resource "null_resource" "run_ansible" {
       # Bootstrap cluster when enviroment variable is set 
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
         echo "Bootstrap Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml --extra-vars '${jsonencode(var.kube_cluster_variables)}'
+        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml --extra-vars '${jsonencode(var.kube_cluster_variables)}' --tags argocd
       fi
 
       # Scale cluster when enviroment variable is set 
       if [ "$SCALE_KUBE_CLUSTER" = true ] ; then
         echo "Scale Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
-      fi
+      fiar
 
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
