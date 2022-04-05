@@ -15,7 +15,7 @@ variable "kube_cluster_variables" {
     ingress_nginx_class   = "nginx"
 
     argocd_enabled   = true
-    argocd_version   = "v2.2.1"
+    argocd_version   = "v2.3.3"
     argocd_namespace = "argocd"
   }
   type = object({
