@@ -13,7 +13,7 @@ resource "null_resource" "run_ansible" {
         echo "Bootstrap Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml --extra-vars '${jsonencode(var.kube_cluster_variables)}'
       fi
-
+      sleep 360000
       # Scale cluster when enviroment variable is set 
       if [ "$SCALE_KUBE_CLUSTER" = true ] ; then
         echo "Scale Kube Cluster ..."
