@@ -11,7 +11,6 @@ variable "kube_cluster_variables" {
 
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
-    hcloud_api_token        = var.hcloud_token
 
     ingress_nginx_enabled = true
     ingress_nginx_class   = "nginx"
