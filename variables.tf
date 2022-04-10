@@ -107,7 +107,6 @@ variable "domain" {
 
 # Enviroment variables coming from vault
 variable "hcloud_token" {
-  sensitive = true
 }
 
 variable "hcloud_ssh_root_public_key" {
