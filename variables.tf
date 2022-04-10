@@ -9,7 +9,8 @@ variable "kube_cluster_variables" {
   default = {
     kube_version = "v1.20.1"
 
-    cloud_provider = "external"
+    cloud_provider          = "external"
+    external_cloud_provider = "hcloud"
 
     ingress_nginx_enabled = true
     ingress_nginx_class   = "nginx"
@@ -105,18 +106,25 @@ variable "domain" {
 }
 
 # Enviroment variables coming from vault
+variable "hcloud_token" {
+  sensitive = true
+}
+
 variable "hcloud_ssh_root_public_key" {
   description = "Public root ssh-key for Hetzner"
   type        = string
+  sensitive   = true
 }
 
 variable "hcloud_ssh_root_private_key" {
   description = "Private root ssh-key for Hetzner"
   type        = string
+  sensitive   = true
 }
 
 variable "hcloud_ssh_warmichi_public_key" {
   description = "Private root ssh-key for Hetzner"
   type        = string
+  sensitive   = true
 }
 

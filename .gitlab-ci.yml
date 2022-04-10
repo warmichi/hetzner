@@ -15,12 +15,12 @@ variables:
 
 .secrets:
   secrets:
-    HCLOUD_TOKEN:
-      vault: infra/prod/hetzner/HCLOUD_TOKEN@secret
-      file: false
     HETZNER_DNS_API_TOKEN:
       vault: infra/prod/hetzner/HETZNER_DNS_API_TOKEN@secret
       file: false 
+    TF_VAR_hcloud_token:
+      vault: infra/prod/hetzner/HCLOUD_TOKEN@secret
+      file: false
     TF_VAR_hcloud_ssh_root_private_key:
       vault: infra/prod/hetzner/HCLOUD_SSH_ROOT_PRIVATE_KEY@secret
     TF_VAR_hcloud_ssh_root_public_key:
