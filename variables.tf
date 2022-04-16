@@ -112,18 +112,15 @@ variable "hcloud_token" {
 variable "hcloud_ssh_root_public_key" {
   description = "Public root ssh-key for Hetzner"
   type        = string
-  sensitive   = true
 }
 
 variable "hcloud_ssh_root_private_key" {
   description = "Private root ssh-key for Hetzner"
   type        = string
-  sensitive   = true
 }
 
 variable "hcloud_ssh_warmichi_public_key" {
   description = "Private root ssh-key for Hetzner"
   type        = string
-  sensitive   = true
 }
 
