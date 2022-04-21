@@ -7,7 +7,7 @@ variable "kube_cluster_name" {
 variable "kube_cluster_variables" {
   description = "Additional Playbook Variables"
   default = {
-    kube_version = "v1.20.1"
+    kube_version = "v1.21.0"
 
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
