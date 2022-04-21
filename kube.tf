@@ -12,7 +12,6 @@ resource "null_resource" "run_ansible" {
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
         echo "Bootstrap Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e '${jsonencode(var.kube_cluster_variables)}' -e hcloud_api_token=$TF_VAR_hcloud_token
-        sleep 1000000
       fi
 
       # Scale cluster when enviroment variable is set 
