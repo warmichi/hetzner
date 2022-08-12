@@ -12,12 +12,12 @@ variable "kube_cluster_variables" {
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
 
-    external_hcloud_cloud = [{
+    external_hcloud_cloud = {
       hcloud_api_token     = ""
       token_secret_name    = "hcloud"
       with_networks        = true
       service_account_name = "cloud-controller-manager"
-    }]
+    }
 
     ingress_nginx_enabled = true
     ingress_nginx_class   = "nginx"
@@ -32,12 +32,12 @@ variable "kube_cluster_variables" {
     cloud_provider          = string
     external_cloud_provider = string
 
-    external_hcloud_cloud = list(object({
+    external_hcloud_cloud = object({
       hcloud_api_token     = string
       token_secret_name    = string
       with_networks        = bool
       service_account_name = string
-    }))
+    })
 
     ingress_nginx_enabled = bool
     ingress_nginx_class   = string
