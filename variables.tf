@@ -18,7 +18,7 @@ variable "kube_cluster_variables" {
       with_networks        = true
       service_account_name = "cloud-controller-manager"
     }]
-    
+
     ingress_nginx_enabled = true
     ingress_nginx_class   = "nginx"
     
@@ -43,7 +43,7 @@ variable "kube_cluster_variables" {
     ingress_nginx_class   = string
 
     argocd_enabled   = bool
-    argocd_version   = string 
+    argocd_version   = string
     argocd_namespace = string
   })
 }
