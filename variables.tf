@@ -13,7 +13,7 @@ variable "kube_cluster_variables" {
     external_cloud_provider = "hcloud"
 
     external_hcloud_cloud = {
-      hcloud_api_token     = ""
+      hcloud_api_token     = "NPp06sxpm7QnCVyquiCKoHGnw2tXw7asVGuzq05PezeYyH75z2fLp7t21bGDl9fL"
       token_secret_name    = "hcloud"
       with_networks        = true
       controller_image_tag = "latest"
