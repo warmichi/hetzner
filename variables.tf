@@ -16,6 +16,7 @@ variable "kube_cluster_variables" {
       hcloud_api_token     = ""
       token_secret_name    = "hcloud"
       with_networks        = true
+      controller_image_tag = "v1.12.1"
       service_account_name = "cloud-controller-manager"
     }
 
@@ -36,6 +37,7 @@ variable "kube_cluster_variables" {
       hcloud_api_token     = string
       token_secret_name    = string
       with_networks        = bool
+      controller_image_tag = string
       service_account_name = string
     })
 
