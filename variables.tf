@@ -11,7 +11,6 @@ variable "kube_cluster_variables" {
 
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
-    
     external_hcloud_cloud = [{
       hcloud_api_token     = ""
       token_secret_name    = "hcloud"
