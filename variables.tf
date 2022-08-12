@@ -11,10 +11,16 @@ variable "kube_cluster_variables" {
 
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
+    
+    external_hcloud_cloud = [{
+      hcloud_api_token  = ""
+      token_secret_name = "hcloud"
+      with_networks     = true
+    }]
 
     ingress_nginx_enabled = true
     ingress_nginx_class   = "nginx"
-
+    
     argocd_enabled   = true
     argocd_version   = "v2.3.3"
     argocd_namespace = "argocd"
@@ -22,13 +28,21 @@ variable "kube_cluster_variables" {
   type = object({
     kube_version = string
 
-    cloud_provider = string
+    cloud_provider          = string
+    external_cloud_provider = string
+
+    external_hcloud_cloud = list(object({
+      hcloud_api_token     = string
+      token_secret_name    = string
+      with_networks        = bool
+      service_account_name = string
+    }))
 
     ingress_nginx_enabled = bool
     ingress_nginx_class   = string
 
     argocd_enabled   = bool
-    argocd_version   = string
+    argocd_version   = string 
     argocd_namespace = string
   })
 }
