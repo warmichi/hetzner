@@ -39,7 +39,7 @@ variable "kube_cluster_variables" {
       with_networks        = bool
       controller_image_tag = string
       service_account_name = string
-  })
+    })
 
     ingress_nginx_enabled = bool
     ingress_nginx_class   = string
