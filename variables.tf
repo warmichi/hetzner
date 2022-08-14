@@ -45,7 +45,6 @@ variable "kubespray_argocd_config" {
     argocd_enabled        = true
     argocd_version        = "v2.4.7"
     argocd_namespace      = "argocd"
-    argocd_admin_password = ""
   }
 }
 
