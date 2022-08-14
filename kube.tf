@@ -23,7 +23,7 @@ resource "null_resource" "run_ansible" {
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
         echo "Upgrade Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e '${jsonencode(local.kubespray_config)}
+        ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e '${jsonencode(local.kubespray_config)}'
       fi
 
       # Remove Kube-Nodes
