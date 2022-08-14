@@ -38,7 +38,7 @@ resource "null_resource" "run_ansible" {
     environment = {
       ANSIBLE_PRIVATE_KEY_FILE  = "${var.hcloud_ssh_root_private_key}"
       ANSIBLE_HOST_KEY_CHECKING = "False"
-      KUBESPRAY_CONFIG = "${jsonencode(local.kubespray_config)}"
+      KUBESPRAY_CONFIG          = "${jsonencode(local.kubespray_config)}"
     }
   }
 
