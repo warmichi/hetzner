@@ -4,57 +4,100 @@ variable "kube_cluster_name" {
   default     = "kube"
 }
 
-variable "kube_cluster_variables" {
+variable "kubespray_kube_config" {
   description = "Additional Playbook Variables"
+  type        = map(any)
   default = {
-    kube_version = "v1.21.0"
-
+    kube_version            = "v1.21.0"
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
+  }
+}
 
+variable "kubespray_ingress_config" {
+  description = "Additional Playbook Variables"
+  type        = map(any)
+  default = {
+    ingress_nginx_enabled = true
+    ingress_nginx_class   = "nginx"
+  }
+
+}
+
+variable "kubespray_cloud_provider_config" {
+  description = "Additional Playbook Variables"
+  type        = map(any)
+  default = {
     external_hcloud_cloud = {
-      hcloud_api_token     = "NPp06sxpm7QnCVyquiCKoHGnw2tXw7asVGuzq05PezeYyH75z2fLp7t21bGDl9fL"
       token_secret_name    = "hcloud"
+      hcloud_api_token     = ""
       with_networks        = true
       controller_image_tag = "latest"
       service_account_name = "cloud-controller-manager"
+      network_id           = ""
     }
+  }
+}
 
-    ingress_nginx_enabled = true
-    ingress_nginx_class   = "nginx"
-
+variable "kubespray_argocd_config" {
+  description = "Additional Playbook Variables"
+  type        = map(any)
+  default = {
     argocd_enabled   = true
     argocd_version   = "v2.4.7"
     argocd_namespace = "argocd"
   }
-  type = object({
-    kube_version = string
-
-    cloud_provider          = string
-    external_cloud_provider = string
-
-    external_hcloud_cloud = object({
-      hcloud_api_token     = string
-      token_secret_name    = string
-      with_networks        = bool
-      controller_image_tag = string
-      service_account_name = string
-    })
-
-    ingress_nginx_enabled = bool
-    ingress_nginx_class   = string
-
-    argocd_enabled   = bool
-    argocd_version   = string
-    argocd_namespace = string
-  })
 }
 
-variable "kube_version" {
-  type        = string
-  description = "Kubernetes Version"
-  default     = "v1.20.1"
-}
+# variable "kube_cluster_variables" {
+#   description = "Additional Playbook Variables"
+#   default = {
+#     kube_version            = "v1.21.0"
+#     cloud_provider          = "external"
+#     external_cloud_provider = "hcloud"
+
+#     external_hcloud_cloud = {
+#       token_secret_name    = "hcloud"
+#       with_networks        = true
+#       controller_image_tag = "latest"
+#       service_account_name = "cloud-controller-manager"
+#     }
+
+#     ingress_nginx_enabled = true
+#     ingress_nginx_class   = "nginx"
+
+#     argocd_enabled   = true
+#     argocd_version   = "v2.4.7"
+#     argocd_namespace = "argocd"
+#   }
+
+#   type = object({
+#     kube_version = string
+
+#     cloud_provider          = string
+#     external_cloud_provider = string
+
+#     external_hcloud_cloud = object({
+#       token_secret_name    = string
+#       with_networks        = bool
+#       controller_image_tag = string
+#       service_account_name = string
+#     })
+
+#     ingress_nginx_enabled = bool
+#     ingress_nginx_class   = string
+
+#     argocd_enabled   = bool
+#     argocd_version   = string
+#     argocd_namespace = string
+#   })
+# }
+
+# variable "kube_version" {
+#   type        = string
+#   description = "Kubernetes Version"
+#   default     = "v1.20.1"
+# }
 
 variable "kube_control_plane_count" {
   type        = number
@@ -124,6 +167,7 @@ variable "domain" {
 
 # Enviroment variables coming from vault
 variable "hcloud_token" {
+  default = ""
 }
 
 variable "hcloud_ssh_root_public_key" {

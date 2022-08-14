@@ -11,7 +11,7 @@ resource "null_resource" "run_ansible" {
       # Bootstrap cluster when enviroment variable is set 
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
         echo "Bootstrap Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e '${jsonencode(var.kube_cluster_variables)}' -e hcloud_api_token=$TF_VAR_hcloud_token
+        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e '${jsonencode(local.kubespray_config)}' -e hcloud_api_token=$TF_VAR_hcloud_token
       fi
 
       # Scale cluster when enviroment variable is set 
@@ -23,7 +23,7 @@ resource "null_resource" "run_ansible" {
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
         echo "Upgrade Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e kube_version=${var.kube_version} 
+        ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e '${jsonencode(local.kubespray_config)}
       fi
 
       # Remove Kube-Nodes
