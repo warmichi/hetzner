@@ -28,13 +28,13 @@ variable "kubespray_cloud_provider_config" {
   description = "Additional Playbook Variables"
   type        = map(any)
   default = {
+    network_id = ""
     external_hcloud_cloud = {
       token_secret_name    = "hcloud"
       hcloud_api_token     = ""
       with_networks        = true
       controller_image_tag = "latest"
       service_account_name = "cloud-controller-manager"
-      network_id           = ""
     }
   }
 }
