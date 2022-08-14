@@ -11,7 +11,7 @@ resource "null_resource" "run_ansible" {
       # Bootstrap cluster when enviroment variable is set 
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
         echo "Bootstrap Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e '${jsonencode(local.kubespray_config)}' -e hcloud_api_token=$TF_VAR_hcloud_token
+        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e $KUBESPRAY_CONFIG -e hcloud_api_token=$TF_VAR_hcloud_token
       fi
 
       # Scale cluster when enviroment variable is set 
@@ -38,6 +38,7 @@ resource "null_resource" "run_ansible" {
     environment = {
       ANSIBLE_PRIVATE_KEY_FILE  = "${var.hcloud_ssh_root_private_key}"
       ANSIBLE_HOST_KEY_CHECKING = "False"
+      KUBESPRAY_CONFIG = "${jsonencode(local.kubespray_config)}"
     }
   }
 
