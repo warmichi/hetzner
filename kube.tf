@@ -1,7 +1,7 @@
 resource "null_resource" "run_ansible" {
   triggers = {
     hcloud_server_ids = join(",", hcloud_server.kube_control_plane.*.id, hcloud_server.kube_node.*.id),
-    kube_version      = local.kubespray_config
+    kubespray_config      = jsonencode(local.kubespray_config)
   }
 
   provisioner "local-exec" {
