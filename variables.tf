@@ -42,9 +42,9 @@ variable "kubespray_argocd_config" {
   description = "Additional Playbook Variables"
   type        = map(any)
   default = {
-    argocd_enabled   = true
-    argocd_version   = "v2.4.7"
-    argocd_namespace = "argocd"
+    argocd_enabled        = true
+    argocd_version        = "v2.4.7"
+    argocd_namespace      = "argocd"
     argocd_admin_password = ""
   }
 }
