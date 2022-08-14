@@ -20,6 +20,7 @@ variable "kubespray_ingress_config" {
   default = {
     ingress_nginx_enabled = true
     ingress_nginx_class   = "nginx"
+    cert_manager_enabled  = true
   }
 
 }
