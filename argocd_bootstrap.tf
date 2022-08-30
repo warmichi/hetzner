@@ -8,6 +8,6 @@ data "template_file" "argocd_bootstrap_tmpl" {
 resource "local_file" "argocd_bootstrap_task" {
   depends_on = [data.template_file.argocd_bootstrap_tmpl]
   
-  content  = data.template_file.argocd_bootsrtrap.rendered
+  content  = data.template_file.argocd_bootsrtrap_tmpl.rendered
   filename = "${path.root}/kubespray/roles/kubernetes-apps/argocd/tasks/argocd_bootstrap.yml"
 }
