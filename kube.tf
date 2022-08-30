@@ -11,7 +11,7 @@ resource "null_resource" "run_ansible" {
       tar xz && mv yq_linux_amd64 /usr/bin/yq
       
       # test yq
-      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml | yq '(name==Kubernetes Apps | Set ArgoCD template list).set_fact.argocd_templates += {"name":  "bootstrap"}'
+      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml | yq '(name == "Kubernetes Apps | Set ArgoCD template list").set_fact.argocd_templates += {"name":  "bootstrap"}'
       
       # sleep workaround for unready resources
       
