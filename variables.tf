@@ -39,7 +39,7 @@ variable "kubespray_cloud_provider_config" {
   }
 }
 
-variable "argocd_boostrap_repo_url" {
+variable "argocd_bootstrap_repo_url" {
   default = ""
 }
 
