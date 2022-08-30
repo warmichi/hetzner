@@ -6,6 +6,15 @@ resource "null_resource" "run_ansible" {
 
   provisioner "local-exec" {
     command = <<EOT
+      # install yq 
+      wget https://github.com/mikefarah/yq/releases/download/v4.27.3/yq_linux_amd64.tar.gz -O - |\
+      tar xz && mv yq_linux_amd64 /usr/bin/yq
+      
+      # test yq
+      sudo cat ${path.root}/kubespray/roles/kubernetes-apps/argocd/tasks/main.yml | yq '.[].set_fact.argocd_templates += {"name":  "bootstrap"}
+      
+      # sleep workaround for unready resources
+      
       sleep 60
 
       # Bootstrap cluster when enviroment variable is set 
