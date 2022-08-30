@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://gitlab.com:infrastructure64/argocd-bootstrap.git
+    repoURL: ${argocd_bootstrap_repo_url}
     targetRevision: HEAD
     path: .
   destination:

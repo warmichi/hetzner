@@ -39,6 +39,10 @@ variable "kubespray_cloud_provider_config" {
   }
 }
 
+variable "argocd_boostrap_repo_url" {
+  default = ""
+}
+
 variable "kubespray_argocd_config" {
   description = "Additional Playbook Variables"
   type        = map(any)
