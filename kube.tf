@@ -10,9 +10,8 @@ resource "null_resource" "run_ansible" {
       wget https://github.com/mikefarah/yq/releases/download/v4.27.3/yq_linux_amd64.tar.gz -O - |\
       tar xz && mv yq_linux_amd64 /usr/bin/yq
       
-      # test yq
-      # yq -i '(.[].name == "Kubernetes Apps | Set ArgoCD template list").set_fact.argocd_templates += {"name":  "bootstrap"}' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
-      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml | yq '(.[] | select(.name == "Kubernetes Apps | Set ArgoCD template list") | .set_fact.argocd_templates) += [{"name":  "bootstrap", "file": "argocd-bootstrap.yml"}]'
+      # inject argocd bootstrap to kubespray task
+      yq -i '(.[] | select(.name == "Kubernetes Apps | Set ArgoCD template list") | .set_fact.argocd_templates) += [{"name":  "bootstrap", "file": "argocd-bootstrap.yml"}]' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # sleep workaround for unready resources
       
