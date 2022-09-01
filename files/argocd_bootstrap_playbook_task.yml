@@ -1,7 +1,7 @@
 - name: Kubernetes Apps | Bootstrap ArgoCD
   become: yes
   kube:
-    name: ArgoCD
+    name: ArgoCD Bootstrap
     kubectl: "{{ bin_dir }}/kubectl"
     filename: "{{ kube_config_dir }}/argocd-bootstrap.yml"
     state: latest
