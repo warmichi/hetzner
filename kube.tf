@@ -19,10 +19,8 @@ resource "null_resource" "run_ansible" {
       # inject wait flag
       yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .kube) += {"wait": "true"}' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
-      # merge argocd tasks
-      yq '.[] += load("${path.root}/files/argocd_bootstrap_playbook_task.yml")' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
-      
-      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
+      # append argocd bootstrap task
+      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml ${path.root}/files/argocd_bootstrap_playbook_task.yml
             
       # sleep workaround for unready resources
       
