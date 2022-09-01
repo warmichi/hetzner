@@ -12,7 +12,11 @@ resource "null_resource" "run_ansible" {
       
       # inject argocd bootstrap to kubespray task
       # yq -i '(.[] | select(.name == "Kubernetes Apps | Set ArgoCD template list") | .set_fact.argocd_templates) += [{"name":  "bootstrap", "file": "argocd-bootstrap.yml"}]' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
-      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml | yq '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .with_items) = "{ argocd_templates | selectattr('bootstrap', 'undefined') | list}"' 
+      
+      # avoid argocd bootstrap with insallation
+      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml | yq '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .with_items) = "{ argocd_templates | selectattr('bootstrap', 'undefined') | list}"'
+      # inject wait flag
+      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml | yq '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .kube) += {"wait": "true"}'
             
       # sleep workaround for unready resources
       
