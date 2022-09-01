@@ -19,7 +19,7 @@ resource "null_resource" "run_ansible" {
       # inject wait flag
       yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .kube) += {"wait": "true"}' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
-      # add bootstrap playbook task
+      # merge argocd tasks
       yq -i /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml ${path.root}/files/argocd_bootstrap_playbook_task.yml 
       
       cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
