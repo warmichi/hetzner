@@ -20,7 +20,7 @@ resource "null_resource" "run_ansible" {
       yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .kube) += {"wait": "true"}' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # merge argocd tasks
-      yq eval-all -i'.[] as $item ireduce ({}; . * $item )' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml ${path.root}/files/argocd_bootstrap_playbook_task.yml 
+      yq eval-all -i '.[] as $item ireduce ({}; . * $item )' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml ${path.root}/files/argocd_bootstrap_playbook_task.yml 
       
       cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
             
