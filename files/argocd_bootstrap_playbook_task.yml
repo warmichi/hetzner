@@ -1,3 +1,4 @@
+---
 - name: Kubernetes Apps | Bootstrap ArgoCD
   become: yes
   kube:
