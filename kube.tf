@@ -14,7 +14,7 @@ resource "null_resource" "run_ansible" {
       yq -i '(.[] | select(.name == "Kubernetes Apps | Set ArgoCD template list") | .set_fact.argocd_templates) += [{"name":  "bootstrap", "file": "argocd-bootstrap.yml"}]' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # avoid argocd bootstrap with insallation
-      yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .with_items) = "{{ argocd_templates | reject('name', 'bootstrap') | list }}"' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
+      yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .with_items) = "{{ argocd_templates | rejectattr('name', 'eq', 'bootstrap') | list }}"' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # inject wait flag
       yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .kube) += {"wait": "true"}' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
@@ -23,7 +23,7 @@ resource "null_resource" "run_ansible" {
       cat ${path.root}/files/argocd_bootstrap_playbook_task.yml >> /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
-            
+      
       # sleep workaround for unready resources
       
       sleep 60
