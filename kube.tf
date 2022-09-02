@@ -11,10 +11,10 @@ resource "null_resource" "run_ansible" {
       tar xz && mv yq_linux_amd64 /usr/bin/yq
       
       # inject argocd bootstrap to kubespray task
-      # yq -i '(.[] | select(.name == "Kubernetes Apps | Set ArgoCD template list") | .set_fact.argocd_templates) += [{"name":  "bootstrap", "file": "argocd-bootstrap.yml"}]' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
+      yq -i '(.[] | select(.name == "Kubernetes Apps | Set ArgoCD template list") | .set_fact.argocd_templates) += [{"name":  "bootstrap", "file": "argocd-bootstrap.yml"}]' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # avoid argocd bootstrap with insallation
-      yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .with_items) = "{{ argocd_templates | selectattr('bootstrap', 'undefined') | list }}"' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
+      yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .with_items) = "{{ argocd_templates | rejectattr('name', 'bootstrap') | list }}"' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # inject wait flag
       yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .kube) += {"wait": "true"}' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
