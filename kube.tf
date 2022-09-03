@@ -17,7 +17,7 @@ resource "null_resource" "run_ansible" {
       yq -i "(.[] | select(.name ==  \"Kubernetes Apps | Install ArgoCD\") | .with_items) = \"{{ argocd_templates | rejectattr('name', 'eq', 'bootstrap') | list }}\"" /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # inject wait flag
-      yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .kube) += {"wait": "true"}' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
+      yq -i '(.[] | select(.name == "Kubernetes Apps | Install ArgoCD") | .kube) += {"wait": true}' /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # append argocd bootstrap task
       cat ${path.root}/files/argocd_bootstrap_playbook_task.yml >> /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
