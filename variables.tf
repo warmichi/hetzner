@@ -56,7 +56,7 @@ variable "kubespray_argocd_config" {
 variable "kube_control_plane_count" {
   type        = number
   description = "Number of control-plane nodes"
-  default     = 3
+  default     = 1 
 }
 
 variable "kube_node_count" {
