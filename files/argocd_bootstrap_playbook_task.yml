@@ -1,3 +1,7 @@
+- name: Kubermetes Apps | Wait for condition ArgoCD Applicationset Controller
+  ansible.builtin.shell:
+    cmd: kubectl wait --for=condition=ready -n argocd pod -l  app.kubernetes.io/name=argocd-applicationset-controller --timeout=60s
+
 - name: Kubernetes Apps | Bootstrap ArgoCD
   become: yes
   kube:
