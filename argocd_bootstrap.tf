@@ -1,7 +1,7 @@
 data "template_file" "argocd_bootstrap_tmpl" {
   template = file("${path.root}/templates/argocd_bootstrap.tpl")
 
-  vars = { 
+  vars = {
     argocd_bootstrap_repo_url = var.argocd_bootstrap_repo_url
     argocd_namespace          = var.kubespray_argocd_config["argocd_namespace"]
   }
