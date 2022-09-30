@@ -32,12 +32,12 @@
   when:
     - "inventory_hostname == groups['kube_control_plane'][0]"
 
-- name: Kubernetes Apps | Bootstrap ArgoCD
+- name: Kubernetes Apps | Bootstrap App ArgoCD
   become: yes
   kube:
     name: ArgoCD Bootstrap
     kubectl: "{{ bin_dir }}/kubectl"
-    filename: "{{ kube_config_dir }}/argocd-bootstrap.yml"
+    filename: "{{ kube_config_dir }}/argocd-bootstrap-app.yml"
     state: latest
   when:
     - "inventory_hostname == groups['kube_control_plane'][0]"
