@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: apps
-  namespace: {{argocd_namespace}}
+  namespace: ${argocd_namespace}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -13,7 +13,7 @@ spec:
     path: .
   destination:
     server: https://kubernetes.default.svc 
-    namespace: {{argocd_namespace}}
+    namespace: ${argocd_namespace}
   syncPolicy:
     automated:
       prune: true
