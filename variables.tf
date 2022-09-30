@@ -39,8 +39,16 @@ variable "kubespray_cloud_provider_config" {
   }
 }
 
-variable "argocd_bootstrap_repo_url" {
+variable "argocd_bootstrap_app_repo_url" {
   default = ""
+}
+
+variable "argocd_vault_token" {
+  default = ""
+}
+
+variable "argocd_vault_address" {
+  default = "https://vault.uwannah.com:8200/"
 }
 
 variable "kubespray_argocd_config" {

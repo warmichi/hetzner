@@ -31,6 +31,9 @@ variables:
     TF_VAR_hcloud_ssh_warmichi_public_key:
       vault: infra/prod/hetzner/HCLOUD_SSH_WARMICHI_PUBLIC_KEY@secret
       file: false
+    TF_VAR_argocd_vault_token:
+      vault: infra/prod/argocd/ARGOCD_VAULT_TOKEN@secret
+      file: false   
 
 .gitlab-tf-backend: &gitlab-tf-backend
   - export TF_ADDRESS=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/production

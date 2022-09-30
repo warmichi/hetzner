@@ -1,5 +1,5 @@
 data "template_file" "ansible_skeleton" {
-  template = file("${path.root}/templates/ansible_skeleton.tpl")
+  template = file("${path.root}/templates/ansible-skeleton.tpl")
 
   vars = {
     connection_strings_control_plane = join("\n", formatlist("%s ansible_host=%s", hcloud_server.kube_control_plane.*.name, hcloud_server.kube_control_plane.*.ipv4_address))
