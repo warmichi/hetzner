@@ -17,7 +17,7 @@ resource "local_file" "argocd_repo_server_tmpl" {
 
 # ConfigMap for Argocd Repo Server with Vault Sidecar Containers
 data "template_file" "argocd_cmp_plugin" {
-  template = file("${path.root}/templates/argocd-cmp-plugin.yml.tpl.j2")
+  template = file("${path.root}/templates/argocd-cmp-plugin.yml.tpl")
 }
 
 resource "local_file" "argocd_cmp_plugin" {
