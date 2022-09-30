@@ -12,19 +12,19 @@ resource "local_file" "argocd_repo_server_tmpl" {
   depends_on = [data.template_file.argocd_repo_server_tmpl]
 
   content  = data.template_file.argocd_repo_server_tmpl.rendered
-  filename = "/etc/kubernetes/argocd-repo-server.yml"
+  filename = "/kubespray/roles/kubernetes-apps/argocd/bootstrap/argocd-repo-server.yml"
 }
 
 # ConfigMap for Argocd Repo Server with Vault Sidecar Containers
 data "template_file" "argocd_cmp_plugin" {
-  template = file("${path.root}/templates/argocd-cmp-plugin.yml.tpl")
+  template = file("${path.root}/templates/argocd-cmp-plugin.yml.tpl.j2")
 }
 
 resource "local_file" "argocd_cmp_plugin" {
   depends_on = [data.template_file.argocd_cmp_plugin]
 
   content  = data.template_file.argocd_cmp_plugin.rendered
-  filename = "/etc/kubernetes/argocd-cmp-plugin.yml"
+  filename = "/kubespray/roles/kubernetes-apps/argocd/bootstrap/argocd-cmp-plugin.yml"
 }
 
 #  Argocd Repo Server Vault Configuration
@@ -42,7 +42,7 @@ resource "local_file" "argocd_vault_configuration_tmpl" {
   depends_on = [data.template_file.argocd_vault_configuration_tmpl]
 
   content  = data.template_file.argocd_vault_configuration_tmpl.rendered
-  filename = "/etc/kubernetes/argocd-vault-configuration.yml"
+  filename = "/kubespray/roles/kubernetes-apps/argocd/bootstrap/argocd-vault-configuration.yml"
 }
 
 # Boostrapping ArgoCD apps with app of apps pattern
@@ -59,5 +59,5 @@ resource "local_file" "argocd_bootstrap_task" {
   depends_on = [data.template_file.argocd_bootstrap_app_tmpl]
 
   content  = data.template_file.argocd_bootstrap_app_tmpl.rendered
-  filename = "/etc/kubernetes/argocd-bootstrap-app.yml"
+  filename = "/kubespray/roles/kubernetes-apps/argocd/bootstrap/argocd-bootstrap-app.yml"
 }
