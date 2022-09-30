@@ -1,6 +1,36 @@
 - name: Kubermetes Apps | Wait for condition ArgoCD Applicationset Controller
+  become: yes
   ansible.builtin.shell:
-    cmd: kubectl wait --for=condition=ready -n argocd pod -l  app.kubernetes.io/name=argocd-applicationset-controller --timeout=60s
+    cmd: kubectl wait --for=condition=ready -n {{argocd_namespace}} pod -l  app.kubernetes.io/name=argocd-applicationset-controller --timeout=60s
+  when:
+    - "inventory_hostname == groups['kube_control_plane'][0]" 
+
+- name: Kubernetes Apps |  ArgoCD Patch Vault Sidecar
+  become: yes
+  ansible.builtin.shell:
+    cmd: kubectl patch -n {{argocd_namespace}} deployment argocd-repo-server --patch-file {{ kube_config_dir }}/argocd-repo-server.yml
+  when:
+    - "inventory_hostname == groups['kube_control_plane'][0]" 
+
+- name: Kubernetes Apps |  ArgoCD Create ConfigMap Vault Sidecar
+  become: yes
+  kube:
+    name: ArgoCD ConfigMap Vualt Sidecar
+    kubectl: "{{ bin_dir }}/kubectl"
+    filename: "{{ kube_config_dir }}/argocd-cmp-plugin.yml"
+    state: latest
+  when:
+    - "inventory_hostname == groups['kube_control_plane'][0]"
+
+- name: Kubernetes Apps |  ArgoCD Vault Configuration Secret
+  become: yes
+  kube:
+    name: ArgoCD Vault Configuration
+    kubectl: "{{ bin_dir }}/kubectl"
+    filename: "{{ kube_config_dir }}/argocd-vault-configuration.yml"
+    state: latest
+  when:
+    - "inventory_hostname == groups['kube_control_plane'][0]"
 
 - name: Kubernetes Apps | Bootstrap ArgoCD
   become: yes
@@ -10,4 +40,5 @@
     filename: "{{ kube_config_dir }}/argocd-bootstrap.yml"
     state: latest
   when:
-    - "inventory_hostname == groups['kube_control_plane'][0]" 
+    - "inventory_hostname == groups['kube_control_plane'][0]"
+
