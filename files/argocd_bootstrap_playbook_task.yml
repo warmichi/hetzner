@@ -9,6 +9,10 @@
         file: argocd-vault-configuration.yml
       - name: argocd-bootstrap-app
         file: argocd-bootstrap-app.yml
+      - name: argocd-role
+        file: argocd-role.yml
+      - name: argocd-role-bindings
+        file: argocd-role-bindings.yml
   when:
     - "inventory_hostname == groups['kube_control_plane'][0]"
 
@@ -65,3 +69,22 @@
   when:
     - "inventory_hostname == groups['kube_control_plane'][0]"
 
+- name: Kubernetes Apps | Bootstrap ArgoCD Role
+  become: yes
+  kube:
+    name: ArgoCD Role
+    kubectl: "{{ bin_dir }}/kubectl"
+    filename: "{{ kube_config_dir }}/argocd-role.yml"
+    state: latest
+  when:
+    - "inventory_hostname == groups['kube_control_plane'][0]"
+
+- name: Kubernetes Apps | Bootstrap App ArgoCD
+  become: yes
+  kube:
+    name: ArgoCD Role Bindings
+    kubectl: "{{ bin_dir }}/kubectl"
+    filename: "{{ kube_config_dir }}/argocd-role-bindings.yml"
+    state: latest
+  when:
+    - "inventory_hostname == groups['kube_control_plane'][0]"
