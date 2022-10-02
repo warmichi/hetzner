@@ -13,8 +13,8 @@ resource "null_resource" "run_ansible" {
       cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
       
       # sleep workaround for unready resources
-      
       sleep 60
+      
 
       # Bootstrap cluster when enviroment variable is set 
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
@@ -25,13 +25,13 @@ resource "null_resource" "run_ansible" {
       # Scale cluster when enviroment variable is set 
       if [ "$SCALE_KUBE_CLUSTER" = true ] ; then
         echo "Scale Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml
+        ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml -e $KUBESPRAY_CONFIG -e hcloud_api_token=$TF_VAR_hcloud_token
       fi
 
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
         echo "Upgrade Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e $KUBESPRAY_CONFIG
+        ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e $KUBESPRAY_CONFIG -e hcloud_api_token=$TF_VAR_hcloud_token
       fi
 
       # Remove Kube-Nodes
