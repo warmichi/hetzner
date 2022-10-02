@@ -26,12 +26,14 @@ resource "null_resource" "run_ansible" {
       if [ "$SCALE_KUBE_CLUSTER" = true ] ; then
         echo "Scale Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml -e $KUBESPRAY_CONFIG
+      fi
 
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
         echo "Upgrade Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e $KUBESPRAY_CONFIG
-
+      fi
+      
       # Remove Kube-Nodes
       if test -f "destroyed_nodes"; then
         echo "Remove Kube Nodes ..."
