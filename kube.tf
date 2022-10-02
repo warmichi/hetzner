@@ -19,20 +19,18 @@ resource "null_resource" "run_ansible" {
       # Bootstrap cluster when enviroment variable is set 
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
         echo "Bootstrap Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e $KUBESPRAY_CONFIG -e hcloud_api_token=$TF_VAR_hcloud_token
+        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e $KUBESPRAY_CONFIG 
       fi
 
       # Scale cluster when enviroment variable is set 
       if [ "$SCALE_KUBE_CLUSTER" = true ] ; then
         echo "Scale Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml -e $KUBESPRAY_CONFIG -e hcloud_api_token=$TF_VAR_hcloud_token
-      fi
+        ansible-playbook -i ${path.root}/inventory /kubespray/scale.yml -e $KUBESPRAY_CONFIG
 
       # Graceful Upgrade Cluster when enviroment variable is set
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
         echo "Upgrade Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e $KUBESPRAY_CONFIG -e hcloud_api_token=$TF_VAR_hcloud_token
-      fi
+        ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e $KUBESPRAY_CONFIG
 
       # Remove Kube-Nodes
       if test -f "destroyed_nodes"; then
