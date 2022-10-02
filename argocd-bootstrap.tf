@@ -67,7 +67,7 @@ data "template_file" "argocd_role_tmpl" {
   template = file("${path.root}/templates/argocd-role.yml.tpl")
 
   vars = {
-    argocd_namespace          = var.kubespray_argocd_config["argocd_namespace"]
+    argocd_namespace = var.kubespray_argocd_config["argocd_namespace"]
   }
 }
 
@@ -83,7 +83,7 @@ data "template_file" "argocd_role_bindings_tmpl" {
   template = file("${path.root}/templates/argocd-role-bindings.yml.tpl")
 
   vars = {
-    argocd_namespace          = var.kubespray_argocd_config["argocd_namespace"]
+    argocd_namespace = var.kubespray_argocd_config["argocd_namespace"]
   }
 }
 
