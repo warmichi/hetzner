@@ -2,7 +2,6 @@
 # Patch for Argocd Repo Server with Vault Sidecar Containers
 data "template_file" "argocd_repo_server_tmpl" {
   template = file("${path.root}/templates/argocd-repo-server.yml.tpl")
-
   vars = {
     argocd_version = var.kubespray_argocd_config["argocd_version"]
   }
@@ -18,7 +17,7 @@ resource "local_file" "argocd_repo_server_tmpl" {
 # ConfigMap for Argocd Repo Server with Vault Sidecar Containers
 data "template_file" "argocd_cmp_plugin" {
   template = file("${path.root}/templates/argocd-cmp-plugin.yml.tpl")
-  
+
   vars = {
     argocd_namespace = var.kubespray_argocd_config["argocd_namespace"]
   }
