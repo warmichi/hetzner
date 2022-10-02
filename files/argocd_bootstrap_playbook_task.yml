@@ -15,7 +15,7 @@
 - name: Kubernetes Apps | Copy Boostrap Manifest Files
   become: yes
   ansible.builtin.copy:
-    src: "/kubespray/roles/kubernetes-apps/argocd/templates/{{ item.file }}"
+    src: "/kubespray/roles/kubernetes-apps/argocd/bootstrap/{{ item.file }}"
     dest: "{{ kube_config_dir }}/{{ item.file }}"
   with_items: "{{ argocd_bootstrap | list }}"
   loop_control:
