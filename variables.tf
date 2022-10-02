@@ -64,13 +64,13 @@ variable "kubespray_argocd_config" {
 variable "kube_control_plane_count" {
   type        = number
   description = "Number of control-plane nodes"
-  default     = 2
+  default     = 1
 }
 
 variable "kube_node_count" {
   type        = number
   description = "Number of worker nodes"
-  default     = 3
+  default     = 2
 }
 
 variable "hetzner_control_plane_type" {
