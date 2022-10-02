@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: ${argocd_bootstrap_repo_url}
     targetRevision: HEAD
-    path: .
+    path: _bootstrap
   destination:
     server: https://kubernetes.default.svc 
     namespace: ${argocd_namespace}
