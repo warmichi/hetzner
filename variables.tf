@@ -40,7 +40,7 @@ variable "kubespray_cloud_provider_config" {
 }
 
 variable "argocd_bootstrap_app_repo_url" {
-  default = ""
+  default = "https://gitlab.com/infrastructure64/argo-cd-apps.git"
 }
 
 variable "argocd_vault_token" {
