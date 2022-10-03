@@ -119,7 +119,7 @@ merge review:
     - *alias-convert-report
     - *gitlab-tf-backend
     - terraform plan -out=$
-    - alias convert_report="jq -r '([.resource_changes[]?.change.actions?]|flatten)|{\"create\":(map(select(.==\"create\"))|length),\"update\":(map(select(.==\"update\"))|length),\"delete\":(map(select(.==\"delete\"))|length)}'"
+    - terraform show --json $PLAN | convert_report > $PLAN_JSON
   artifacts:
     expire_in: 1 week
     name: plan
