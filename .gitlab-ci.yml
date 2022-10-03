@@ -27,6 +27,11 @@ stages:
   - apply
   - destroy
 
+.alias-convert-report: &alias-convert-report
+  # - apt update
+  - shopt -s expand_aliases
+  - alias convert_report="jq -r '([.resource_changes[]?.change.actions?]|flatten)|{\"create\":(map(select(.==\"create\"))|length),\"update\":(map(select(.==\"update\"))|length),\"delete\":(map(select(.==\"delete\"))|length)}'"
+
 .gitlab-tf-backend: &gitlab-tf-backend
   - export TF_ADDRESS=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/production
   - export TF_HTTP_ADDRESS=${TF_ADDRESS}
@@ -111,9 +116,10 @@ merge review:
   stage: plan
   extends: .secrets
   script:
+    - *alias-convert-report
     - *gitlab-tf-backend
-    - terraform plan -out=$PLAN
-    - terraform show --json ${PLAN} | jq -r '([.resource_changes[]?.change.actions?]|flatten)|{"create":(map(select(.=="create"))|length),"update":(map(select(.=="update"))|length),"delete":(map(select(.=="delete"))|length)}' > ${JSON_PLAN_FILE}
+    - terraform plan -out=$
+    - alias convert_report="jq -r '([.resource_changes[]?.change.actions?]|flatten)|{\"create\":(map(select(.==\"create\"))|length),\"update\":(map(select(.==\"update\"))|length),\"delete\":(map(select(.==\"delete\"))|length)}'"
   artifacts:
     expire_in: 1 week
     name: plan
@@ -175,6 +181,7 @@ destroy:
   needs: []
   extends: .secrets
   script:
+    # - *install-curl-jq
     - *gitlab-tf-backend
     - terraform destroy -auto-approve
   when: manual
