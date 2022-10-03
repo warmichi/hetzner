@@ -4,7 +4,7 @@ image:
 # Default output file for Terraform plan
 variables:
   PLAN: plan.tfplan
-  JSON_PLAN_FILE: tfplan.json
+  PLAN_FILE: tfplan.json
   TF_IN_AUTOMATION: "true"
   BOOTSTRAP_KUBE_CLUSTER:
     value: "false"
@@ -119,12 +119,12 @@ merge review:
     - *alias-convert-report
     - *gitlab-tf-backend
     - terraform plan -out=$PLAN
-    - terraform show --json $PLAN | convert_report > $PLAN_JSON
+    - terraform show --json $PLAN | convert_report > $PLAN_FILE
   artifacts:
     expire_in: 1 week
     name: plan
     reports:
-        terraform: $JSON_PLAN_FILE
+        terraform: $PLAN_FILE
   only:
     - merge_requests
 
