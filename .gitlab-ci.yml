@@ -31,7 +31,6 @@ stages:
   # - apt update
   # - apt install curl jq
   - alias convert_report="jq -r '([.resource_changes[].change.actions?]|flatten)|{\"create\":(map(select(.==\"create\"))|length),\"update\":(map(select(.==\"update\"))|length),\"delete\":(map(select(.==\"delete\"))|length)}'"
-  -  echo 'alias convert_report="jq -r '([.resource_changes[].change.actions?]|flatten)|{\"create\":(map(select(.==\"create\"))|length),\"update\":(map(select(.==\"update\"))|length),\"delete\":(map(select(.==\"delete\"))|length)}'"' > ~/.bash_aliases
 
 .gitlab-tf-backend: &gitlab-tf-backend
   - export TF_ADDRESS=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/terraform/state/production
@@ -120,7 +119,7 @@ merge review:
     - *install-curl-jq
     - *gitlab-tf-backend
     - terraform plan -out=$PLAN
-    - "terraform show --json $PLAN | convert_report > $JSON_PLAN_FILE"
+    - "terraform show $PLAN > $JSON_PLAN_FILE"
   artifacts:
     expire_in: 1 week
     name: plan
