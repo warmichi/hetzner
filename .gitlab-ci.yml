@@ -118,7 +118,7 @@ merge review:
   script:
     - *alias-convert-report
     - *gitlab-tf-backend
-    - terraform plan -out=$
+    - terraform plan -out=$PLAN
     - terraform show --json $PLAN | convert_report > $PLAN_JSON
   artifacts:
     expire_in: 1 week
