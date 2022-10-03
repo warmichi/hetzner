@@ -115,8 +115,8 @@ kics-scan:
 merge review:
   stage: plan
   extends: 
-    - .secrets
     - .install-curl-jq
+    - .secrets
   script:
     - *gitlab-tf-backend
     - terraform plan -out=$PLAN
