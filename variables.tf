@@ -8,7 +8,7 @@ variable "kubespray_kube_config" {
   description = "Additional Playbook Variables"
   type        = map(any)
   default = {
-    kube_version            = "v1.21.0"
+    kube_version            = "v1.25.2"
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
   }
