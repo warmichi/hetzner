@@ -9,13 +9,10 @@ resource "null_resource" "run_ansible" {
           
       # append argocd bootstrap task
       cat ${path.root}/files/argocd_bootstrap_playbook_task.yml >> /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
-      
-      cat /kubespray/roles/kubernetes-apps/argocd/tasks/main.yml
-      
+           
       # sleep workaround for unready resources
       sleep 60
       
-
       # Bootstrap cluster when enviroment variable is set 
       if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
         echo "Bootstrap Kube Cluster ..."
@@ -32,15 +29,7 @@ resource "null_resource" "run_ansible" {
       if [ "$UPGRADE_KUBE_CLUSTER" = true ] ; then
         echo "Upgrade Kube Cluster ..."
         ansible-playbook -i ${path.root}/inventory /kubespray/upgrade-cluster.yml -e $KUBESPRAY_CONFIG
-      fi
-      
-      # Remove Kube-Nodes
-      if test -f "destroyed_nodes"; then
-        echo "Remove Kube Nodes ..."
-        destroyed_nodes=$(cat destroyed_nodes | sed 's/^\|$//g'|paste -sd, - )
-        ansible-playbook -i ${path.root}/inventory -i $destroyed_nodes /kubespray/remove-node.yml \
-        -e node=$destroyed_nodes -e reset_nodes=false -e allow_ungraceful_removal=true -e skip_confirmation=true      
-      fi
+      fi        
     EOT
 
     environment = {

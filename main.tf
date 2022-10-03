@@ -42,13 +42,6 @@ resource "hcloud_server" "kube_control_plane" {
     hcloud_ssh_key.root.id
   ]
 
-  provisioner "local-exec" {
-    when    = destroy
-    command = <<EOT
-      echo "${self.name}" >> destroyed_nodes
-    EOT
-  }
-
   # **Note**: the depends_on is important when directly attaching the
   # server to a network. Otherwise Terraform will attempt to create
   # server and sub-network in parallel. This may result in the server
@@ -74,12 +67,6 @@ resource "hcloud_server" "kube_node" {
   ssh_keys = [
     hcloud_ssh_key.root.id
   ]
-
-  provisioner "local-exec" {
-    when    = destroy
-    command = <<EOT
-      echo "${self.name}" >> destroyed_nodes
-    EOT
   }
 
   # **Note**: the depends_on is important when directly attaching the
