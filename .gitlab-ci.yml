@@ -28,7 +28,8 @@ stages:
   - destroy
 
 .install-curl-jq: &install-curl-jq
-  - apk add --update curl jq
+  - apt update
+  - apt install curl jq
   - alias convert_report="jq -r '([.resource_changes[].change.actions?]|flatten)|{\"create\":(map(select(.==\"create\"))|length),\"update\":(map(select(.==\"update\"))|length),\"delete\":(map(select(.==\"delete\"))|length)}'"
 
 .gitlab-tf-backend: &gitlab-tf-backend
