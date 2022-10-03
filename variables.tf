@@ -12,6 +12,7 @@ variable "kubespray_kube_config" {
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
   }
+}
 
 variable "kubespray_ingress_config" {
   description = "Additional Playbook Variables"
