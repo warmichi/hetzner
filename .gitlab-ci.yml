@@ -49,23 +49,23 @@ stages:
 .secrets:
   secrets:
     HETZNER_DNS_API_TOKEN:
-      vault: prod/hetzner/HETZNER_DNS_API_TOKEN@secret
+      vault: prod/hetzner/HETZNER_DNS_API_TOKEN@kv
       file: false 
     TF_VAR_hcloud_token:
-      vault: prod/hetzner/HCLOUD_TOKEN@secret
+      vault: prod/hetzner/HCLOUD_TOKEN@kv
       file: false
     TF_VAR_hcloud_ssh_root_private_key:
-      vault: prod/hetzner/HCLOUD_SSH_ROOT_PRIVATE_KEY@secret
+      vault: prod/hetzner/HCLOUD_SSH_ROOT_PRIVATE_KEY@kv
     TF_VAR_hcloud_ssh_root_public_key:
-      vault: prod/hetzner/HCLOUD_SSH_ROOT_PUBLIC_KEY@secret
+      vault: prod/hetzner/HCLOUD_SSH_ROOT_PUBLIC_KEY@kv
       file: false
     TF_VAR_hcloud_ssh_warmichi_private_key:
-      vault: prod/hetzner/HCLOUD_SSH_WARMICHI_PRIVATE_KEY@secret
+      vault: prod/hetzner/HCLOUD_SSH_WARMICHI_PRIVATE_KEY@kv
     TF_VAR_hcloud_ssh_warmichi_public_key:
-      vault: prod/hetzner/HCLOUD_SSH_WARMICHI_PUBLIC_KEY@secret
+      vault: prod/hetzner/HCLOUD_SSH_WARMICHI_PUBLIC_KEY@kv
       file: false
     TF_VAR_argocd_vault_token:
-      vault: prod/argocd/ARGOCD_VAULT_TOKEN@secret
+      vault: prod/argocd/ARGOCD_VAULT_TOKEN@kv
       file: false   
 
 vault ping:
