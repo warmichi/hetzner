@@ -53,24 +53,30 @@ stages:
   secrets:
     HETZNER_DNS_API_TOKEN:
       vault: prod/hetzner/HETZNER_DNS_API_TOKEN@secret
-      file: false 
+      file: false
+      token: $VAULT_ID_TOKEN  
     TF_VAR_hcloud_token:
       vault: prod/hetzner/HCLOUD_TOKEN@secret
       file: false
+      token: $VAULT_ID_TOKEN 
     TF_VAR_hcloud_ssh_root_private_key:
       vault: prod/hetzner/HCLOUD_SSH_ROOT_PRIVATE_KEY@secret
+      token: $VAULT_ID_TOKEN 
     TF_VAR_hcloud_ssh_root_public_key:
       vault: prod/hetzner/HCLOUD_SSH_ROOT_PUBLIC_KEY@secret
       file: false
-      token: $VAULT_ID_TOKEN
+      token: $VAULT_ID_TOKEN 
     TF_VAR_hcloud_ssh_warmichi_private_key:
       vault: prod/hetzner/HCLOUD_SSH_WARMICHI_PRIVATE_KEY@secret
+      token: $VAULT_ID_TOKEN 
     TF_VAR_hcloud_ssh_warmichi_public_key:
       vault: prod/hetzner/HCLOUD_SSH_WARMICHI_PUBLIC_KEY@secret
       file: false
+      token: $VAULT_ID_TOKEN 
     TF_VAR_argocd_vault_token:
       vault: prod/argocd/ARGOCD_VAULT_TOKEN@secret
       file: false   
+      token: $VAULT_ID_TOKEN 
 
 vault ping:
   image:
@@ -96,7 +102,6 @@ validate:
   extends: .secrets
   script:
     - echo $TF_VAR_hcloud_ssh_root_public_key
-    - echo "hallo"
     - *gitlab-tf-backend
     - terraform validate
     - terraform fmt -check -diff
