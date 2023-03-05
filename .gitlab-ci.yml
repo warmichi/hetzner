@@ -92,6 +92,7 @@ validate:
   extends: .secrets
   script:
     - echo $TF_VAR_hcloud_ssh_root_public_key
+    - echo "hallo"
     - *gitlab-tf-backend
     - terraform validate
     - terraform fmt -check -diff
