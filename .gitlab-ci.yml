@@ -47,6 +47,9 @@ stages:
   - terraform init -reconfigure
   
 .secrets:
+  id_tokens:
+    VAULT_ID_TOKEN:
+      aud: https://gitlab.com
   secrets:
     HETZNER_DNS_API_TOKEN:
       vault: prod/hetzner/HETZNER_DNS_API_TOKEN@secret
@@ -57,8 +60,9 @@ stages:
     TF_VAR_hcloud_ssh_root_private_key:
       vault: prod/hetzner/HCLOUD_SSH_ROOT_PRIVATE_KEY@secret
     TF_VAR_hcloud_ssh_root_public_key:
-      vault: data/prod/hetzner/HCLOUD_SSH_ROOT_PUBLIC_KEY@secret
+      vault: prod/hetzner/HCLOUD_SSH_ROOT_PUBLIC_KEY@secret
       file: false
+      token: $VAULT_ID_TOKEN
     TF_VAR_hcloud_ssh_warmichi_private_key:
       vault: prod/hetzner/HCLOUD_SSH_WARMICHI_PRIVATE_KEY@secret
     TF_VAR_hcloud_ssh_warmichi_public_key:
