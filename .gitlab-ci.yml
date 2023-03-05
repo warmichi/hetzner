@@ -57,7 +57,7 @@ stages:
     TF_VAR_hcloud_ssh_root_private_key:
       vault: prod/hetzner/HCLOUD_SSH_ROOT_PRIVATE_KEY@secret
     TF_VAR_hcloud_ssh_root_public_key:
-      vault: prod/hetzner/HCLOUD_SSH_ROOT_PUBLIC_KEY@secret
+      vault: data/prod/hetzner/HCLOUD_SSH_ROOT_PUBLIC_KEY@secret
       file: false
     TF_VAR_hcloud_ssh_warmichi_private_key:
       vault: prod/hetzner/HCLOUD_SSH_WARMICHI_PRIVATE_KEY@secret
