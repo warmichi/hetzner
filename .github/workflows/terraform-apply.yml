@@ -11,8 +11,12 @@ env:
   CONFIG_DIRECTORY: "./"
 
 jobs:
-  vault:
+  terraform:
+    if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
+    name: "Terraform Apply"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Import Secrets
         id: import-secrets
@@ -29,13 +33,6 @@ jobs:
             secret/data/prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
             secret/data/prod/argocd ARGOCD_VAULT_TOKEN;
             secret/data/prod/terraform TF_API_TOKEN;
-  terraform:
-    if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
-    name: "Terraform Apply"
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
       - name: Checkout
         uses: actions/checkout@v3
 
