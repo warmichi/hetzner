@@ -21,14 +21,14 @@ jobs:
           url: ${{vars.VAULT_ADDR}}
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            prod/hetzner HETZNER_DNS_API_TOKEN;
-            prod/hetzner HCLOUD_TOKEN;
-            prod/hetzner HCLOUD_SSH_ROOT_PRIVATE_KEY;
-            prod/hetzner HCLOUD_SSH_ROOT_PUBLIC_KEY;
-            prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
-            prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
-            prod/argocd ARGOCD_VAULT_TOKEN;
-            prod/hetzner TF_API_TOKEN;
+            secret/prod/hetzner HETZNER_DNS_API_TOKEN;
+            secret/prod/hetzner HCLOUD_TOKEN;
+            secret/prod/hetzner HCLOUD_SSH_ROOT_PRIVATE_KEY;
+            secret/prod/hetzner HCLOUD_SSH_ROOT_PUBLIC_KEY;
+            secret/prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
+            secret/prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
+            secret/prod/argocd ARGOCD_VAULT_TOKEN;
+            secret/prod/hetzner TF_API_TOKEN;
   terraform:
     if: github.repository != 'hashicorp-education/learn-terraform-github-actions'
     name: "Terraform Apply"
