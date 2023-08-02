@@ -16,7 +16,7 @@ jobs:
         id: import-secrets
         uses: hashicorp/vault-action@v2
         with:
-          url: https://vault.mycompany.com:8200
+          url: ${{vars.VAULT_ADDR}}
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
             prod/hetzner/HETZNER_DNS_API_TOKEN;
