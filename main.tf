@@ -10,7 +10,7 @@ resource "hcloud_placement_group" "kube_node_group" {
 
 resource "hcloud_ssh_key" "root" {
   name       = var.kube_cluster_name
-  public_key = var.hcloud_ssh_root_public_key
+  public_key = var.HCLOUD_SSH_ROOT_PUBLIC_KEY
 }
 
 resource "hcloud_network" "network" {
