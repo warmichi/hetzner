@@ -6,7 +6,7 @@ on:
       - main
   # pull_request:
 env:
-  TF_VAR_VAULT_TOKEN: ${{vars.VAULT_ADDR}}
+  TF_VAR_token: ${{vars.TFC_TOKEN}}
 
 jobs:
   terraform:
