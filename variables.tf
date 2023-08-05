@@ -127,10 +127,11 @@ variable "domain" {
   default     = "uwannah.com"
 }
 
-# Enviroment variables coming from vault
-# variable "HCLOUD_TOKEN" {
-#   default = "121364546"
-# }
+#Enviroment variables coming from vault
+variable "HCLOUD_TOKEN" {
+  type = string
+  default = ""
+}
 
 variable "HCLOUD_SSH_ROOT_PUBLIC_KEY" {
   description = "Public root ssh-key for Hetzner"
