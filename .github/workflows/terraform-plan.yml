@@ -19,16 +19,9 @@ jobs:
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
-
-      - name: Configure Terraform backend
-        run: |
-          cat >terraformrc <<-EOF
-          credentials "app.terraform.io" {
-            token = "${{ secrets.TFC_TOKEN }}"
-          }
-          EOF
-          export TF_CLI_CONFIG_FILE="./terraformrc"
-
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+          
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
