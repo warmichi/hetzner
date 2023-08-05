@@ -130,7 +130,6 @@ variable "domain" {
 #Enviroment variables coming from vault
 variable "HCLOUD_TOKEN" {
   type = string
-  default = ""
 }
 
 variable "HCLOUD_SSH_ROOT_PUBLIC_KEY" {
