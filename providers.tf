@@ -1,5 +1,5 @@
 provider "hcloud" {
-  token = var.HCLOUD_TOKEN
+  token = var.hcloud_token
 
 }
 
