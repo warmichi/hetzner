@@ -29,7 +29,7 @@ jobs:
             secret/data/prod/hetzner HCLOUD_TOKEN;
             secret/data/prod/hetzner HCLOUD_SSH_ROOT_PRIVATE_KEY;
             secret/data/prod/hetzner HCLOUD_SSH_ROOT_PUBLIC_KEY;
-            secret/data/prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
+            secret/data/prod/hetzner HCLOUD_SSH_WARMICHI_PRIVATE_KEY;
             secret/data/prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
             secret/data/prod/argocd ARGOCD_VAULT_TOKEN;
             secret/data/prod/terraform TF_API_TOKEN;
