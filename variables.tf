@@ -127,7 +127,6 @@ variable "domain" {
   default     = "uwannah.com"
 }
 
-# Enviroment variables coming from vault
 variable "HCLOUD_TOKEN" {
   default = ""
 }
