@@ -128,21 +128,21 @@ variable "domain" {
 }
 
 # Enviroment variables coming from vault
-variable "hcloud_token" {
+variable "HCLOUD_TOKEN" {
   default = ""
 }
 
-variable "hcloud_ssh_root_public_key" {
+variable "HCLOUD_SSH_ROOT_PUBLIC_KEY" {
   description = "Public root ssh-key for Hetzner"
   type        = string
 }
 
-variable "hcloud_ssh_root_private_key" {
+variable "HCLOUD_SSH_ROOT_PRIVATE_KEY" {
   description = "Private root ssh-key for Hetzner"
   type        = string
 }
 
-variable "hcloud_ssh_warmichi_public_key" {
+variable "HCLOUD_SSH_WARMICHI_PUBLIC_KEY" {
   description = "Private root ssh-key for Hetzner"
   type        = string
 }
