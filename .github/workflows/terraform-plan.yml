@@ -27,6 +27,7 @@ jobs:
             token = "${{ secrets.TFC_TOKEN }}"
           }
           EOF
+          export TF_CLI_CONFIG_FILE="./terraformrc"
 
       - name: Terraform fmt
         id: fmt
