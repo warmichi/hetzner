@@ -147,3 +147,7 @@ variable "HCLOUD_SSH_WARMICHI_PUBLIC_KEY" {
   type        = string
 }
 
+variable "VAULT_TOKEN" {
+  description = "Vault Token"
+  type = string
+}
