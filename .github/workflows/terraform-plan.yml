@@ -6,7 +6,7 @@ on:
       - main
   # pull_request:
 env:
-  TF_VAR_token: ${{vars.TFC_TOKEN}}
+  TF_VAR_token: ${{secrets.TFC_TOKEN}}
 
 jobs:
   terraform:
@@ -19,7 +19,7 @@ jobs:
       
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
-    
+          
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
