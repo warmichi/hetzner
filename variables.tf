@@ -94,7 +94,7 @@ variable "hetzner_lb_type" {
 variable "hetzner_image" {
   type        = string
   description = "Hetzner OS Image"
-  default     = "ubuntu-20.04"
+  default     = "ubuntu-22.04"
 }
 
 variable "hetzner_datacenter" {
