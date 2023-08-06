@@ -146,11 +146,3 @@ variable "HCLOUD_SSH_WARMICHI_PUBLIC_KEY" {
   description = "Private root ssh-key for Hetzner"
   type        = string
 }
-
-variable "ACCESS_KEY_ID" {
-  type        = string
-}
-
-variable "SECRET_ACCESS_KEY" {
-  type        = string
-}
