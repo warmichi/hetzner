@@ -10,7 +10,7 @@
 # }
 
 terraform {
-  backend = "s3" {
+  backend "s3" {
     bucket     = "kube-1-terraform-state-prod"
     key        = "terraform.tfstate"
     endpoint   = "s3.uwannah.com" 
@@ -18,3 +18,4 @@ terraform {
     secret_key = var.SECRET_ACCESS_KEY
   }
 }
+
