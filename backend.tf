@@ -9,13 +9,13 @@
 #   }
 # }
 
-data "terraform_remote_state" "network" {
+terraform {
   backend = "s3"
   config = {
     bucket   = "kube-1-terraform-state-prod"
     key      = "terraform.tfstate"
     endpoint = "s3.uwannah.com" 
-    access_key = var.ACCESS_KEY
+    access_key = var.ACCESS_KEY_ID
     secret_key = var.SECRET_ACCESS_KEY
   }
 }
