@@ -147,7 +147,7 @@ variable "HCLOUD_SSH_WARMICHI_PUBLIC_KEY" {
   type        = string
 }
 
-variable "ACCESS_KEY" {
+variable "ACCESS_KEY_ID" {
   type        = string
 }
 
