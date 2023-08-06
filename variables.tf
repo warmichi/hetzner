@@ -132,12 +132,7 @@ variable "HCLOUD_TOKEN" {
   type = string
 }
 
-variable "HCLOUD_SSH_ROOT_PUBLIC_KEY" {
-  description = "Public root ssh-key for Hetzner"
-  type        = string
-}
-
-variable "HCLOUD_SSH_ROOT_PRIVATE_KEY" {
+variable "HCLOUD_SSH_WARMICHI_PRIVATE_KEY" {
   description = "Private root ssh-key for Hetzner"
   type        = string
 }

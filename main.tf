@@ -10,7 +10,7 @@ resource "hcloud_placement_group" "kube_node_group" {
 
 resource "hcloud_ssh_key" "root" {
   name       = var.kube_cluster_name
-  public_key = var.HCLOUD_SSH_ROOT_PUBLIC_KEY
+  public_key = var.HCLOUD_SSH_WARMICHI_PUBLIC_KEY
 }
 
 resource "hcloud_network" "network" {
@@ -31,7 +31,6 @@ resource "hcloud_server" "kube_control_plane" {
   server_type        = var.hetzner_control_plane_type
   image              = var.hetzner_image
   location           = var.hetzner_datacenter
-  user_data          = data.template_file.cloud_init.rendered
   placement_group_id = hcloud_placement_group.kube_control_plane_group.id
 
   network {
@@ -56,7 +55,6 @@ resource "hcloud_server" "kube_node" {
   server_type        = var.hetzner_node_server_type
   image              = var.hetzner_image
   location           = var.hetzner_datacenter
-  user_data          = data.template_file.cloud_init.rendered
   placement_group_id = hcloud_placement_group.kube_node_group.id
 
   network {
