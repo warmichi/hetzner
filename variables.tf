@@ -128,7 +128,7 @@ variable "domain" {
 }
 
 #Enviroment variables coming from vault
-variable "hcloud_token" {
+variable "HCLOUD_TOKEN" {
   type = string
 }
 

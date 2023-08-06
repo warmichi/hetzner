@@ -21,7 +21,7 @@ jobs:
           url: ${{vars.VAULT_ADDR}}
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
-            secret/data/prod/hetzner HCLOUD_TOKEN | TF_VAR_hcloud_token;
+            secret/data/prod/hetzner HCLOUD_TOKEN | TF_VAR_HCLOUD_TOKEN;
             secret/data/prod/hetzner HCLOUD_SSH_ROOT_PRIVATE_KEY | TF_VAR_HCLOUD_SSH_ROOT_PRIVATE_KEY;
             secret/data/prod/hetzner HCLOUD_SSH_ROOT_PUBLIC_KEY | TF_VAR_HCLOUD_SSH_ROOT_PUBLIC_KEY;
             secret/data/prod/hetzner HCLOUD_SSH_WARMICHI_PRIVATE_KEY | TF_VAR_HCLOUD_SSH_WARMICHI_PRIVATE_KEY;
