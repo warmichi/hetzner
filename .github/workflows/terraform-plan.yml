@@ -21,8 +21,6 @@ jobs:
           token: ${{ secrets.VAULT_TOKEN }}
           secrets: |
             secret/data/prod/hetzner HCLOUD_TOKEN | TF_VAR_HCLOUD_TOKEN;
-            secret/data/prod/hetzner HCLOUD_SSH_ROOT_PRIVATE_KEY | TF_VAR_HCLOUD_SSH_ROOT_PRIVATE_KEY;
-            secret/data/prod/hetzner HCLOUD_SSH_ROOT_PUBLIC_KEY | TF_VAR_HCLOUD_SSH_ROOT_PUBLIC_KEY;
             secret/data/prod/hetzner HCLOUD_SSH_WARMICHI_PRIVATE_KEY | TF_VAR_HCLOUD_SSH_WARMICHI_PRIVATE_KEY;
             secret/data/prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY | TF_VAR_HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
             secret/data/prod/argocd ARGOCD_VAULT_TOKEN | TF_VAR_ARGOCD_VAULT_TOKEN;
