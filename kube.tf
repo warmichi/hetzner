@@ -40,9 +40,7 @@ resource "null_resource" "run_ansible" {
   }
 
   depends_on = [
-    hetznerdns_record.kube_control_plane,
     hcloud_server.kube_control_plane,
-    hetznerdns_record.kube_node,
     hcloud_server.kube_node
   ]
 }
