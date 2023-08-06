@@ -28,6 +28,9 @@ jobs:
             secret/data/prod/hetzner HCLOUD_SSH_WARMICHI_PUBLIC_KEY | TF_VAR_HCLOUD_SSH_WARMICHI_PUBLIC_KEY;
             secret/data/prod/argocd ARGOCD_VAULT_TOKEN | TF_VAR_ARGOCD_VAULT_TOKEN;
             secret/data/prod/terraform TF_API_TOKEN;
+            secret/data/prod/cloudflare/r2/kube-1-terraform-state-prod ACCESS_KEY_ID | TF_VAR_ACCESS_KEY_ID
+            secret/data/prod/cloudflare/r2/kube-1-terraform-state-prod SECRET_ACCESS_KEY| TF_VAR_SECRET_ACCESS_KEY
+
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
