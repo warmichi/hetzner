@@ -16,7 +16,7 @@ resource "null_resource" "run_ansible" {
       # Bootstrap cluster when enviroment variable is set 
       # if [ "$BOOTSTRAP_KUBE_CLUSTER" = true ] ; then
         echo "Bootstrap Kube Cluster ..."
-        ansible-playbook -i ${path.root}/inventory /kubespray/cluster.yml -e $KUBESPRAY_CONFIG 
+        ansible-playbook -i /kubespray/inventory/kube-1/inventory.ini /kubespray/cluster.yml -e $KUBESPRAY_CONFIG 
       # fi
 
       # Scale cluster when enviroment variable is set 
