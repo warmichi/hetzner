@@ -1,0 +1,10 @@
+#cloud-config
+
+users:
+  - name: warmichi
+    groups: users, admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${hcloud_ssh_warmichi_public_key}
+
