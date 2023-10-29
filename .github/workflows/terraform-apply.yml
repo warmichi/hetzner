@@ -45,6 +45,8 @@ jobs:
         run: terraform validate -no-color
     
       - name: Terraform Plan
+        env:
+          BOOTSTRAP_KUBE_CLUSTER: ${{ vars.BOOTSTRAP_KUBE_CLUSTER }}
         id: plan
         run: terraform plan -no-color
         continue-on-error: true
