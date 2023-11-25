@@ -39,8 +39,6 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
-        env:
-          TF_API_TOKEN: ${{ env.TF_API_TOKEN }}
     
       - name: Terraform Validate
         id: validate
