@@ -28,9 +28,9 @@ jobs:
 
       - name: Save Secrets to files
         run: |
-          cat "${{ env.HCLOUD_SSH_WARMICHI_PRIVATE_KEY }}" > ${{ env.RUNNER_TEMP }}/warmichi
+          echo "${{ env.HCLOUD_SSH_WARMICHI_PRIVATE_KEY }}" > ${{ env.RUNNER_TEMP }}/warmichi
           chmod 600 ${{ env.RUNNER_TEMP }}/warmichi
-          cat "${{ env.HCLOUD_SSH_WARMICHI_PRIVATE_KEY }}" > /tmp/warmichi 
+          echo "${{ env.HCLOUD_SSH_WARMICHI_PRIVATE_KEY }}" > /tmp/warmichi 
           echo "TF_VAR_HCLOUD_SSH_WARMICHI_PRIVATE_KEY=$(readlink -f ${{ env.RUNNER_TEMP }}/warmichi )" >> $GITHUB_ENV
 
       - name: Setup Terraform
