@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
+
       - name: Vault Secrets
         uses: hashicorp/vault-action@v2
         with:
@@ -30,31 +30,29 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           cli_config_credentials_token: ${{ env.TF_API_TOKEN }}
-        env: 
-          TF_CLI_CONFIG_FILE: ${{ github.workspace }}/.terraformrc
-
+        env:
+          TF_CLI_CONFIG_FILE: ${{ env.RUNNER_TEMP }}/.terraformrc
 
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
-    
+
       - name: Terraform Init
         id: init
         run: terraform init
-    
+
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-    
+
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
         continue-on-error: true
-    
+
       - name: Terraform Apply
         env:
           BOOTSTRAP_KUBE_CLUSTER: ${{ vars.BOOTSTRAP_KUBE_CLUSTER }}
         id: apply
         run: terraform apply -auto-approve -no-color
-    
