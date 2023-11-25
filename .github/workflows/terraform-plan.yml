@@ -26,13 +26,6 @@ jobs:
             secret/data/prod/argocd ARGOCD_VAULT_TOKEN | TF_VAR_ARGOCD_VAULT_TOKEN;
             secret/data/prod/terraform TF_API_TOKEN;
 
-      - name: Save Secrets to files
-        run: |
-          echo "${{ env.HCLOUD_SSH_WARMICHI_PRIVATE_KEY }}" > ${{ env.RUNNER_TEMP }}/warmichi
-          chmod 600 ${{ env.RUNNER_TEMP }}/warmichi
-          echo "${{ env.HCLOUD_SSH_WARMICHI_PRIVATE_KEY }}" > /tmp/warmichi 
-          echo "TF_VAR_HCLOUD_SSH_WARMICHI_PRIVATE_KEY=$(readlink -f ${{ env.RUNNER_TEMP }}/warmichi )" >> $GITHUB_ENV
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
