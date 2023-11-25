@@ -31,7 +31,7 @@ jobs:
         with:
           cli_config_credentials_token: ${{ env.TF_API_TOKEN }}
         env:
-          TF_CLI_CONFIG_FILE: ${{ env.RUNNER_TEMP }}/.terraformrc
+          TF_CLI_CONFIG_FILE: /root/.terraformrc
 
       - name: Terraform fmt
         id: fmt
