@@ -5,7 +5,7 @@ terraform {
     hostname = "app.terraform.io"
 
     workspaces {
-      tags = ["hetzner"]
+      name = "hetzner"
     }
   }
 }
