@@ -8,7 +8,7 @@ variable "kubespray_kube_config" {
   description = "Additional Playbook Variables"
   type        = map(any)
   default = {
-    kube_version            = "v1.24.6"
+    kube_version            = "v1.28"
     cloud_provider          = "external"
     external_cloud_provider = "hcloud"
   }
@@ -56,7 +56,7 @@ variable "kubespray_argocd_config" {
   type        = map(any)
   default = {
     argocd_enabled   = true
-    argocd_version   = "v2.4.7"
+    argocd_version   = "v2.9.2"
     argocd_namespace = "argocd"
   }
 }
