@@ -30,6 +30,9 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           cli_config_credentials_token: ${{ env.TF_API_TOKEN }}
+        env: 
+          TF_CLI_CONFIG_FILE: ${{ github.workspace }}/.terraformrc
+
 
       - name: Terraform fmt
         id: fmt
