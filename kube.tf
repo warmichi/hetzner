@@ -38,7 +38,8 @@ resource "null_resource" "run_ansible" {
     environment = {
       ANSIBLE_PRIVATE_KEY_FILE  = "${var.HCLOUD_SSH_WARMICHI_PRIVATE_KEY}"
       ANSIBLE_HOST_KEY_CHECKING = "False"
-      KUBESPRAY_CONFIG          = "${jsonencode(local.kubespray_config)}"
+      ANSIBLE_SSH_ARGS = "-o UserKnownHostsFile=/dev/null"
+      KUBESPRAY_CONFIG = "${jsonencode(local.kubespray_config)}"
     }
   }
 
