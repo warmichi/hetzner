@@ -43,7 +43,7 @@ variable "argocd_bootstrap_app_repo_url" {
   default = "https://gitlab.com/infrastructure64/argo-cd-apps.git"
 }
 
-variable "argocd_vault_token" {
+variable "ARGOCD_VAULT_TOKEN" {
   default = ""
 }
 

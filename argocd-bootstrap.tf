@@ -32,7 +32,7 @@ data "template_file" "argocd_vault_configuration_tmpl" {
   template = file("${path.root}/templates/argocd-vault-configuration.yml.tpl")
   vars = {
     argocd_namespace     = var.kubespray_argocd_config["argocd_namespace"]
-    argocd_vault_token   = var.argocd_vault_token
+    argocd_vault_token   = var.ARGOCD_VAULT_TOKEN
     argocd_vault_address = var.argocd_vault_address
   }
 }
