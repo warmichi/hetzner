@@ -42,7 +42,7 @@
 - name: Kubernetes Apps |  ArgoCD Create ConfigMap Vault Sidecar
   become: yes
   kube:
-    name: ArgoCD ConfigMap Vualt Sidecar
+    name: ArgoCD ConfigMap Vault Sidecar
     kubectl: "{{ bin_dir }}/kubectl"
     filename: "{{ kube_config_dir }}/argocd-cmp-plugin.yml"
     state: latest
